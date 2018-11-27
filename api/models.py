@@ -2,6 +2,9 @@ import re
 
 class Users:
     def __init__(self, username, email, password):
+        self.username = username
+        self.email = email
+        self.password = password
 
     def check_user_exist(self):
         if username != None:
