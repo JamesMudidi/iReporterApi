@@ -1,6 +1,5 @@
 <h2>Badges:</h2>
-[![Build Status](https://travis-ci.org/JamesMudidi/iRepoterApi.svg?branch=develop-v1)](https://travis-ci.org/JamesMudidi/iRepoterApi)
-
+[![Build Status](https://travis-ci.org/JamesMudidi/iReporterApi.svg?branch=develop-v1)](https://travis-ci.org/JamesMudidi/iReporterApi)
 [![Requirements Status](https://requires.io/github/JamesMudidi/iRepoterApi/requirements.svg?branch=develop-v1)](https://requires.io/github/JamesMudidi/iRepoterApi/requirements/?branch=develop-v1)
 
 [![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/iRepoterApi/badge.svg?branch=develop-v1)](https://coveralls.io/github/JamesMudidi/iRepoterApi?branch=develop-v1)
