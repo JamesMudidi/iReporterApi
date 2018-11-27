@@ -16,7 +16,7 @@ def signup():
 
     user = Users()
     error = user.validate_input(username)
-    exists = user.check_user_exist(username)
+    exists = user.check_user_exist()
 
     if not error:
         if not exists:
