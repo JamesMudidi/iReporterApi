@@ -1,19 +1,20 @@
 import unittest
 from api.routes import app
 import json
-from db import DatabaseConnection
 
 
 class TestUsers(unittest.TestCase):
     def setUp(self):
         self.test_client = app.test_client()
-        self.db = DatabaseConnection()
 
     def test_user_register(self):
         user = {
-            'username': 'KengoWada',
-            'email': 'kengowada@nasa.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -24,13 +25,16 @@ class TestUsers(unittest.TestCase):
 
         message = json.loads(response.data.decode())
 
-        self.assertEqual(message['message'], 'KengoWada successfully registered.')
+        self.assertEqual(message['message'], 'James successfully registered.')
     
     def test_register_username_twice(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -40,9 +44,12 @@ class TestUsers(unittest.TestCase):
         )
 
         user2 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         response2  = self.test_client.post(
@@ -57,9 +64,11 @@ class TestUsers(unittest.TestCase):
 
     def test_register_email_twice(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -69,9 +78,11 @@ class TestUsers(unittest.TestCase):
         )
 
         user2 = {
-            'username': 'WadaKengo',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         response2  = self.test_client.post(
@@ -86,9 +97,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_username(self):
         user = {
-            'username': '',
-            'email': 'kengowada@nasa.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : '',
+            'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -103,9 +117,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_email(self):
         user = {
-            'username': 'kengowada',
-            'email': '',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : '',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -120,9 +137,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_password(self):
         user = {
-            'username': 'kengowada',
-            'email': 'kengowada@nasa.com',
-            'password': ''
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : ''
         }
 
         response  = self.test_client.post(
@@ -137,9 +157,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_invalid_email(self):
         user = {
-            'username': 'kengowada',
-            'email': 'kengonasa.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'jamesgmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -154,9 +177,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_password_length(self):
         user = {
-            'username': 'kengowada',
-            'email': 'kengowada@nasa.com',
-            'password': 'keda'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'pas'
         }
 
         response  = self.test_client.post(
@@ -167,13 +193,16 @@ class TestUsers(unittest.TestCase):
 
         message = json.loads(response.data.decode())
 
-        self.assertEqual(message['Error'], 'Password has to be longer than 8 characters.')
+        self.assertEqual(message['Error'], 'Password has to be longer than 4 characters.')
 
     def test_user_login(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -183,8 +212,8 @@ class TestUsers(unittest.TestCase):
         )
 
         user = {
-            'username': 'KengoWada',
-            'password': 'kengowada'
+            'username': 'james',
+            'password': 'password'
         }
 
         response = self.test_client.post(
@@ -195,13 +224,16 @@ class TestUsers(unittest.TestCase):
 
         message = json.loads(response.data.decode())
 
-        self.assertEqual(message['message'], 'KengoWada successfully logged in.')
+        self.assertEqual(message['message'], 'james successfully logged in.')
 
     def test_user_login_empty_username(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -212,7 +244,7 @@ class TestUsers(unittest.TestCase):
 
         user = {
             'username': '',
-            'password': 'kengowada'
+            'password': 'password'
         }
 
         response = self.test_client.post(
@@ -227,9 +259,12 @@ class TestUsers(unittest.TestCase):
 
     def test_user_login_empty_password(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -239,7 +274,7 @@ class TestUsers(unittest.TestCase):
         )
 
         user = {
-            'username': 'KengoWada',
+            'username': 'james',
             'password': ''
         }
 
@@ -255,9 +290,12 @@ class TestUsers(unittest.TestCase):
     
     def test_login_wrong_username(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -267,8 +305,8 @@ class TestUsers(unittest.TestCase):
         )
 
         user = {
-            'username': 'Kengo Wada',
-            'password': 'kengowada'
+            'username': 'mudidi',
+            'password': 'password'
         }
 
         response = self.test_client.post(
@@ -283,9 +321,12 @@ class TestUsers(unittest.TestCase):
 
     def test_login_wrong_password(self):
         user1 = {
-            'username': 'KengoWada',
-            'email': 'kengowada@apple.com',
-            'password': 'kengowada'
+            'id' : 1
+            'name' : 'james'
+            'email' : 'james@gmail.com',
+            'phoneNeumber' : '0701234567'
+            'username' : 'james',
+            'password' : 'password'
         }
 
         self.test_client.post(
@@ -295,8 +336,8 @@ class TestUsers(unittest.TestCase):
         )
 
         user = {
-            'username': 'KengoWada',
-            'password': 'kengowada1234'
+            'username': 'james',
+            'password': 'passworld'
         }
 
         response = self.test_client.post(
@@ -308,7 +349,4 @@ class TestUsers(unittest.TestCase):
         message = json.loads(response.data.decode())
 
         self.assertEqual(message['message'], 'Wrong login credentials.')
-
-    def tearDown(self):
-        self.db.drop_table('users')
     
