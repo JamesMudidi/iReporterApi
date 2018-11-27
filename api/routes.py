@@ -52,7 +52,7 @@ def login():
         else:
             return jsonify ({'message': 'Wrong login credentials.'}), 400
     else:
-        return jsonify({'Error': error}), 400
+        return jsonify({'Error': 'Sorry we could not process that request'}), 400
 
 
 @app.route('/api/v1/welcome')
