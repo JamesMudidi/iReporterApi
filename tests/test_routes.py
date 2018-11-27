@@ -12,7 +12,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -32,7 +32,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -47,7 +47,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -66,7 +66,7 @@ class TestUsers(unittest.TestCase):
         user1 = {
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -80,7 +80,7 @@ class TestUsers(unittest.TestCase):
         user2 = {
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -99,7 +99,7 @@ class TestUsers(unittest.TestCase):
         user = {
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -119,7 +119,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -139,7 +139,7 @@ class TestUsers(unittest.TestCase):
             'id' : 1,
             'name' : 'james',
             'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
             'username' : 'james',
             'password' : ''
         }
@@ -159,7 +159,7 @@ class TestUsers(unittest.TestCase):
             'id' : 1,
             'name' : 'james',
             'email' : 'jamesgmail.com',
-            'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
             'username' : 'james',
             'password' : 'password'
         }
@@ -179,7 +179,7 @@ class TestUsers(unittest.TestCase):
             'id' : 1,
             'name' : 'james',
             'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
             'username' : 'james',
             'password' : 'pas'
         }
@@ -199,7 +199,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -230,7 +230,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -261,7 +261,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -292,7 +292,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -323,7 +323,7 @@ class TestUsers(unittest.TestCase):
 			'id' : 1,
 			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567',
+			'phoneNumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
