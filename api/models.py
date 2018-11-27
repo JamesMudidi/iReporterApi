@@ -2,11 +2,11 @@ import re
 
 class Users:
     def user(self):
-        self.id = id
-        self.name = name
-        self.email = email
-        self.phoneNumber = phoneNumber
-        self.username = username
+        self.id = id,
+        self.name = name,
+        self.email = email,
+        self.phoneNumber = phoneNumber,
+        self.username = username,
         self.password = password
 
     def check_user_exist(self):
