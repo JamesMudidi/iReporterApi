@@ -8,6 +8,7 @@ certifi==2018.10.15
 cffi==1.11.5
 chardet==3.0.4
 Click==7.0
+colorama==0.4.0
 configparser==3.5.0
 coverage==4.5.2
 coveralls==1.5.1
@@ -41,10 +42,12 @@ pyOpenSSL==18.0.0
 pytest==4.0.1
 pytest-cov==2.6.0
 python-dotenv==0.9.1
+PyYAML==3.13
 requests==2.20.1
 scandir==1.9.0
 singledispatch==3.4.0.3
 six==1.11.0
+typed-ast==1.1.0
 urllib3==1.24.1
 Werkzeug==0.14.1
 wrapt==1.10.11
