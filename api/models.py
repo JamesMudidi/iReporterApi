@@ -1,7 +1,7 @@
 import re
 
 class Users:
-    def user(self, id, name, email, phoneNeumber, username, password):
+    def user(self):
         self.id = id
         self.name = name
         self.email = email
