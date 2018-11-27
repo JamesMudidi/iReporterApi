@@ -41,7 +41,7 @@ def login():
 
     if not error:
         if username != None:
-            if password[password] == password and username[username] == username:
+            if password[0] == password and username[0] == username:
                 token = create_access_token(username)
                 return jsonify ({
                     'access_token': token,
