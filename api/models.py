@@ -16,8 +16,8 @@ class Users:
             return 'Email already has an account.'
 
     def validate_input(self):			
-        if not password or password.isspace():
-            return 'Password field can not be left empty.'
+        if not username or username.isspace():
+            return 'Username field can not be left empty.'
 			
         elif len(self.password) < 4:
             return 'Password has to be longer than 4 characters.'
