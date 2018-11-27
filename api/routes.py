@@ -15,7 +15,7 @@ def signup():
     password = data.get('password')
 
     user = Users()
-    error = user.validate_input(username, password)
+    error = user.validate_input(username)
     exists = user.check_user_exist(username)
 
     if not error:
