@@ -16,7 +16,7 @@ class Users:
             return 'Email already has an account.'
 
     def validate_input(self):			
-        if (self.isspace()) == True:
+        if self():
             return 'Fields can not be left empty.'
 			    
     @staticmethod
