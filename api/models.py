@@ -15,14 +15,8 @@ class Users:
         if email != None:
             return 'Email already has an account.'
 
-    def validate_input(self):
-        if not self.username or self.username.isspace():
-            return 'Username field can not be left empty.'
-			
-        elif not self.phoneNumber or self.phoneNumber.isspace():
-            return 'Phone Number field can not be left empty.'
-			
-        elif not self.email or self.email.isspace():
+    def validate_input(self):			
+        if not self.email or self.email.isspace():
             return 'Email field can not be left empty.'
 			
         elif not re.match(r"[^@.]+@[A-Za-z]+\.[a-z]+", self.email):
