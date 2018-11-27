@@ -11,7 +11,7 @@ def signup():
     name = data.get('name')
     email = data.get('email')
     username = data.get('username')
-    phoneNmber = data.get('phoneNumber')
+    phoneNumber = data.get('phoneNumber')
     password = data.get('password')
 
     user = Users(name, email, phoneNumber, username, password)
