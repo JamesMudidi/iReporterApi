@@ -1,5 +1,3 @@
-import re
-
 class Users:
     def check_user_exist(self):
         if username != None:
