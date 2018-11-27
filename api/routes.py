@@ -58,7 +58,6 @@ def login():
 
 
 @app.route('/api/v1/welcome')
-@jwt_required
 def welcome():
     username = get_jwt_identity()
 
