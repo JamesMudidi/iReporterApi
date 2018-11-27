@@ -1,12 +1,16 @@
 language: python
+
 python:
-  - "3.6"
-branches:
-  only:
-  - develop
+  - "3.6.5"
 install:
   - pip install -r requirements.txt
+
 script:
-  - coverage run --omit */home/travis/virtualenv/* -m pytest
-  - coverage report
+  - pytest --cov
+  - coverage
+  - coverage3 report
+  - coveralls 
+
+after_success:
   - coveralls
+  - coverage

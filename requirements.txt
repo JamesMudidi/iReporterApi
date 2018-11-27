@@ -1,5 +1,5 @@
 asn1crypto==0.24.0
-astroid==2.1.0
+astroid==1.6.5
 atomicwrites==1.2.1
 attrs==18.2.0
 autopep8==1.4.3
@@ -11,7 +11,7 @@ Click==7.0
 configparser==3.5.0
 coverage==4.5.2
 coveralls==1.5.1
-cryptography==2.4.2
+cryptography==2.4.1
 docopt==0.6.2
 enum34==1.1.6
 Flask==1.0.2
@@ -36,9 +36,9 @@ py==1.7.0
 pycodestyle==2.4.0
 pycparser==2.19
 PyJWT==1.6.4
-pylint==2.2.0
+pylint==1.9.3
 pyOpenSSL==18.0.0
-pytest==4.0.1
+pytest==4.0.0
 pytest-cov==2.6.0
 python-dotenv==0.9.1
 requests==2.20.1
