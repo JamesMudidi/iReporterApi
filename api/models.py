@@ -22,7 +22,7 @@ class Users:
         elif not self.username or self.username.isspace():
             return 'Username field can not be left empty.'
 			
-        elif not self.phoneNumber or self.phonrNumber.isspace():
+        elif not self.phoneNumber or self.phoneNumber.isspace():
             return 'Phone Number field can not be left empty.'
 			
         elif not self.email or self.email.isspace():
