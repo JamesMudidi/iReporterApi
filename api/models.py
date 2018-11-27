@@ -16,11 +16,6 @@ class Users:
             return 'Email already has an account.'
 
     def validate_input(self):			
-        if not self.password or self.password.isspace():
-            return 'Password field can not be left empty.'
-			
-        elif len(self.password) < 4:
-            return 'Password has to be longer than 4 characters.'
     
     @staticmethod
     def login_validate(username, password):
