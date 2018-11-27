@@ -16,8 +16,8 @@ def signup():
 
     user = Users()
 
-    if not error:
-        if not exists:
+    if not user.validate_input:
+        if not user.check_user_exist:
             password_hash = generate_password_hash(password, method='sha256')
             token = create_access_token(username)
             return jsonify({
