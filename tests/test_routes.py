@@ -9,10 +9,10 @@ class TestUsers(unittest.TestCase):
 
     def test_user_register(self):
         user = {
-			'id' : 1
-			'name' : 'james'
+			'id' : 1,
+			'name' : 'james',
 			'email' : 'james@gmail.com',
-			'phoneNeumber' : '0701234567'
+			'phoneNeumber' : '0701234567',
 			'username' : 'james',
 			'password' : 'password'
         }
@@ -29,12 +29,12 @@ class TestUsers(unittest.TestCase):
     
     def test_register_username_twice(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -44,12 +44,12 @@ class TestUsers(unittest.TestCase):
         )
 
         user2 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         response2  = self.test_client.post(
@@ -64,11 +64,11 @@ class TestUsers(unittest.TestCase):
 
     def test_register_email_twice(self):
         user1 = {
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -78,11 +78,11 @@ class TestUsers(unittest.TestCase):
         )
 
         user2 = {
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         response2  = self.test_client.post(
@@ -97,12 +97,11 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_username(self):
         user = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : '',
-            'password' : 'password'
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -117,12 +116,12 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_email(self):
         user = {
-            'id' : 1
-            'name' : 'james'
-            'email' : '',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         response  = self.test_client.post(
@@ -137,10 +136,10 @@ class TestUsers(unittest.TestCase):
 
     def test_register_empty_password(self):
         user = {
-            'id' : 1
-            'name' : 'james'
+            'id' : 1,
+            'name' : 'james',
             'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
+            'phoneNeumber' : '0701234567',
             'username' : 'james',
             'password' : ''
         }
@@ -157,10 +156,10 @@ class TestUsers(unittest.TestCase):
 
     def test_register_invalid_email(self):
         user = {
-            'id' : 1
-            'name' : 'james'
+            'id' : 1,
+            'name' : 'james',
             'email' : 'jamesgmail.com',
-            'phoneNeumber' : '0701234567'
+            'phoneNeumber' : '0701234567',
             'username' : 'james',
             'password' : 'password'
         }
@@ -177,10 +176,10 @@ class TestUsers(unittest.TestCase):
 
     def test_register_password_length(self):
         user = {
-            'id' : 1
-            'name' : 'james'
+            'id' : 1,
+            'name' : 'james',
             'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
+            'phoneNeumber' : '0701234567',
             'username' : 'james',
             'password' : 'pas'
         }
@@ -197,12 +196,12 @@ class TestUsers(unittest.TestCase):
 
     def test_user_login(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -228,12 +227,12 @@ class TestUsers(unittest.TestCase):
 
     def test_user_login_empty_username(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -259,12 +258,12 @@ class TestUsers(unittest.TestCase):
 
     def test_user_login_empty_password(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -290,12 +289,12 @@ class TestUsers(unittest.TestCase):
     
     def test_login_wrong_username(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
@@ -321,12 +320,12 @@ class TestUsers(unittest.TestCase):
 
     def test_login_wrong_password(self):
         user1 = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1,
+			'name' : 'james',
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567',
+			'username' : 'james',
+			'password' : 'password'
         }
 
         self.test_client.post(
