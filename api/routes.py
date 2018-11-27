@@ -25,22 +25,6 @@ def login():
 
     error = Users.login_validate(username, password)
 
-    if not error:
-        if username != None:
-            if password['password'] == password and username['username'] == username:
-                token = create_access_token(username)
-                return jsonify ({
-                    'access_token': token,
-                    'message': f'{username} successfully logged in.'
-                }), 200
-            else:
-                return jsonify ({'message': 'Wrong login credentials.'}), 400
-        else:
-            return jsonify ({'message': 'Wrong login credentials.'}), 400
-    else:
-        return jsonify({'Error': error}), 400
-
-
 @app.route('/api/v1/welcome')
 def welcome():
     username = get_jwt_identity()
