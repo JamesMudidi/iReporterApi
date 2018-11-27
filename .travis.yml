@@ -5,6 +5,11 @@ python:
 install:
   - pip install -r requirements.txt
 
+before_success:
+  - coveralls
+  - coverage
+  - coverage3 report
+
 script:
   - pytest --cov
   - coverage
@@ -14,3 +19,4 @@ script:
 after_success:
   - coveralls
   - coverage
+  - coverage3 report
