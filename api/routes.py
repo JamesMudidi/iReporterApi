@@ -14,7 +14,7 @@ def signup():
     phoneNumber = data.get('phoneNumber')
     password = data.get('password')
 
-    user = Users(username, email, password)
+    user = Users(username, password)
 
     if not user.validate_input:
         if not user.check_user_exist:
