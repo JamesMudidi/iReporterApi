@@ -35,12 +35,13 @@ def login():
     data = request.get_json()
 
     username = data.get('username')
+    password = data.get('password')
 
     error = Users.login_validate(username, password)
 
     if not error:
         if username != None:
-            if username[0] == username:
+            if password[1] == password and username[1] == username:
                 token = create_access_token(username)
                 return jsonify ({
                     'access_token': token,
