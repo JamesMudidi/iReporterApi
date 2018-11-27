@@ -16,20 +16,6 @@ def signup():
 
     user = Users()
 
-    if not error:
-        if not exists:
-            password_hash = generate_password_hash(password, method='sha256')
-            token = create_access_token(username)
-            return jsonify({
-                'access_token': token,
-                'message': f'{username} successfully registered.'
-                }), 201
-        else:
-            return jsonify({'message': exists}), 401
-    else:
-        return jsonify({'Error': error}), 400
-
-
 @app.route('/api/v1/login', methods=['POST'])
 def login():
     data = request.get_json()
