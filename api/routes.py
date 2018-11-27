@@ -15,7 +15,6 @@ def signup():
     password = data.get('password')
 
     user = Users()
-    exists = user.check_user_exist()
 
     if not error:
         if not exists:

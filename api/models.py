@@ -9,11 +9,6 @@ class Users:
         self.username = username,
         self.password = password
 
-    def check_user_exist(self):
-        if username != None:
-            return 'Username is taken.'
-        if email != None:
-            return 'Email already has an account.'
 
     @staticmethod
     def login_validate(username, password):
