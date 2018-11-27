@@ -16,10 +16,7 @@ class Users:
             return 'Email already has an account.'
 
     def validate_input(self):			
-        if not self.email or self.email.isspace():
-            return 'Email field can not be left empty.'
-			
-        elif not re.match(r"[^@.]+@[A-Za-z]+\.[a-z]+", self.email):
+        if not re.match(r"[^@.]+@[A-Za-z]+\.[a-z]+", self.email):
             return 'Enter a valid email address.'
 			
         elif not self.password or self.password.isspace():
