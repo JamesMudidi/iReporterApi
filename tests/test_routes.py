@@ -9,12 +9,12 @@ class TestUsers(unittest.TestCase):
 
     def test_user_register(self):
         user = {
-            'id' : 1
-            'name' : 'james'
-            'email' : 'james@gmail.com',
-            'phoneNeumber' : '0701234567'
-            'username' : 'james',
-            'password' : 'password'
+			'id' : 1
+			'name' : 'james'
+			'email' : 'james@gmail.com',
+			'phoneNeumber' : '0701234567'
+			'username' : 'james',
+			'password' : 'password'
         }
 
         response  = self.test_client.post(
