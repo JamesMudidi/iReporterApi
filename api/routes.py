@@ -25,9 +25,9 @@ def signup():
                 'message': f'{username} successfully registered.'
                 }), 201
         else:
-            return jsonify({'message': exists}), 401
+            return jsonify({'message': 'Sorry that name has been taken'}), 401
     else:
-        return jsonify({'Error': 'Error'}), 400
+        return jsonify({'Error': 'Sorry we could not process that request'}), 400
 
 
 @app.route('/api/v1/login', methods=['POST'])
