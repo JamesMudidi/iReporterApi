@@ -17,7 +17,6 @@ class Users:
 
     def validate_input(self):			
     
-    @staticmethod
     def login_validate(username, password):
         if not username or username.isspace():
             return 'Username field can not be left empty.'
