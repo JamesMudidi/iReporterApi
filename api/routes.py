@@ -42,7 +42,7 @@ def login():
     error = Users.login_validate(username, password)
 
     if not error:
-        if user != None:
+        if username != None:
             if check_password_hash(user['password'], password) and user['username'] == username:
                 token = create_access_token(username)
                 return jsonify ({
