@@ -6,10 +6,7 @@ from app.view.helper import Validators
 
 redflag_list = []
 class RedFlagViews(MethodView):
-
-    #self, id, "23/11/2018", "James", "red-flag", (12.6578.8.9090), "draft", "collapsed bridges"
-    # redflag_record = RedFlag(1,"23/11/2018", "James", "red-flag", [12.6578,8.9090], "rejected", "collapsed bridges")
-   
+  
     def get(self, id):
         if id is None:
             if not redflag_list:
@@ -71,9 +68,6 @@ class RedFlagViews(MethodView):
             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
         return update_id
             
-        
-
-
     # Delete a specific red flag record
     def delete(self, id):
         get_id = Validators.validate_redflag_id(id)
@@ -94,8 +88,6 @@ class RedFlagViews(MethodView):
             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
         return get_id
        
-
-
 class UpdateStatus(MethodView):
 
      def put(self, id):
@@ -118,7 +110,6 @@ class UpdateStatus(MethodView):
                 return jsonify({"status": 400, "data":[{"error-message" : "wrong body format. follow this example ->> {'status':'under investigation'}"}]})
             return jsonify({"status":202, "data":[{'error-message' : 'Content-type must be json'}]})
         return jsonify({"status": 400, "data":[{"error-message" : "id cannot be a negative"}]})
-
 
 class RedFlagUrls:
     @staticmethod
