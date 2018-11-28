@@ -67,12 +67,12 @@ def welcome():
 def page_not_found(e):
     valid_urls = {
         'Signup': {'url': '/api/v1/signup', 'method(s)': 'POST', 'body': {'name': 'String', 'email': 'example@email.com', 'username': 'String', 'phoneNumber': 'String', 'password': 'At least 4 characters.'}},
-        'Login': {'url': '/api/v1/login', 'method(s)': 'POST', 'body': {'username': 'String', 'password': 'Enter user password.'}},
+        'Signin': {'url': '/api/v1/login', 'method(s)': 'POST', 'body': {'username': 'String', 'password': 'Enter user password.'}},
         'Welcome': {'url': '/api/v1/welcome', 'method(s)': 'GET', 'header': 'JWT access token.'}
     }
     return jsonify ({
         'Hello': 'Welcome to Irepoter',
         'Usage': 'Use the following URLs for testing on postman',
-		'Valid_Urls': 'valid_urls',
+		'Valid_Urls': valid_urls,
         'message': 'Please contact iRepoter for more details on this API.'
         })
