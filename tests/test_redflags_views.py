@@ -150,13 +150,10 @@ def test_for_updating_redflag_status_with_wrong_values():
                            data=json.dumps({"status" : "fhfhfhfhfhf"}))
     result2 = CLIENT().put('/api/v1/update-red-flags/1', content_type='application/json',
                            data=json.dumps({}))
-
     result3 = CLIENT().put('/api/v1/update-red-flags/-1', content_type='application/json',
-                           data=json.dumps({}))
-    
+                           data=json.dumps({}))  
     result4 = CLIENT().put('/api/v1/update-red-flags/james', content_type='application/json',
                            data=json.dumps({}))
-    
     result5 = CLIENT().put('/api/v1/update-red-flags/1', content_type='text',
                            data=json.dumps({}))
 
@@ -184,24 +181,21 @@ def test_for_updating_redflag_status_with_wrong_values():
     assert json_data4['data'][0]['error-message'] == "id should be a non negative integer"
     assert json_data5['data'][0]['error-message'] == "Content-type must be json"
 
-############################# Tests to change_geolocation_of_a_redflag with_wrong_values ######################################
+### Change geolocation of redflag with wrong values ###
 def test_to_change_geolocation_of_a_redflag_with_wrong_values():
     """
     Method for changing geolocation
     """
     result1 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : 4}))
-    
     result2 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : "fhfhf"}))
     result3 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : True}))
     result4 = CLIENT().put('/api/v1/red-flags/james', content_type='application/json',
-                           data=json.dumps({"location" : [2,2]}))
-    
+                           data=json.dumps({"location" : [2,2]}))   
     result5 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : ["2","2"]}))
-
     result6 = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : [2,2,2]}))
     result7 = CLIENT().put('/api/v1/red-flags/-1', content_type='application/json',
@@ -216,21 +210,17 @@ def test_to_change_geolocation_of_a_redflag_with_wrong_values():
         assert json_data['data'][0]['error-message'] == "wrong body format. follow this example ->> {'status':'under investigation'}"
         assert json_data['status'] == 400
 
-    
-
     json_data4 = json.loads(result4.data)
     json_data5 = json.loads(result5.data)
     json_data6 = json.loads(result6.data)
     json_data7 = json.loads(result7.data)
-
     
     assert json_data4['data'][0]['error-message'] == "id should be a non negative integer"
     assert json_data5['data'][0]['error-message'] == ["location should contain only integers or floats"]
     assert json_data6['data'][0]['error-message'] == ["location expects only two parameters in the list"]
     assert json_data7['data'][0]['error-message'] == "id should be a non negative integer"
 
-
-#########################tests for updating a red-flag that doesn't exist####################################
+### Updating a red-flag that doesn't exist ###
 def test_to_update_a_redflag_which_doesnt_exist():
     result1 = CLIENT().put('/api/v1/red-flags/10000', content_type='application/json',
                                         data=json.dumps({"location" : [2,3]}))
@@ -245,7 +235,7 @@ def test_to_update_a_redflag_which_doesnt_exist():
         assert json_data['data'][0]['error-message'] == "No red-flag found"
         assert json_data['status'] == 404
 
-#########################tests for deleting a red-flag that doesn't exist####################################
+### Deleting a red-flag that doesn't exist ###
 def test_to_delete_a_redflag_which_doesnt_exist():
     result = CLIENT().delete('/api/v1/red-flags/10000', content_type='application/json',
                                         data=json.dumps({"createdBy" : "James"}))
@@ -256,7 +246,7 @@ def test_to_delete_a_redflag_which_doesnt_exist():
     assert json_data['data'][0]['error-message'] == "No red-flag found"
     assert json_data['status'] == 404
 
-#########################tests for getting a red-flag that doesn't exist####################################
+### Getting a red-flag that doesn't exist ###
 def test_to_get_a_redflag_which_doesnt_exist():
     result1 = CLIENT().get('/api/v1/red-flags/10000')
     result2 = CLIENT().get('/api/v1/red-flags/-3')
@@ -282,16 +272,14 @@ def test_to_get_a_redflag_which_doesnt_exist():
     assert json_data2['status'] == 400
     assert json_data3['status'] == 400
 
-#########################tests for making a request with data which is not in json format #################
+### Making a request with data which is not in json format ###
 def test_to_make_a_request_with_wrong_content_type():
     result1 = CLIENT().post('/api/v1/red-flags', content_type='text',
                            data=json.dumps({"createdBy" : "James",
                                             "location" : [8.6784, 2.5673],
                                             "comment" : "collapsed bridges"}))
-
     result2 = CLIENT().put('/api/v1/red-flags/1', content_type='text',
                                         data=json.dumps({"location" : [2,3]}))
-
     result3 = CLIENT().delete('/api/v1/red-flags/1', content_type='text',
                                         data=json.dumps({"createdBy" : "James"}))
     results = [result1, result2, result3]
@@ -302,7 +290,7 @@ def test_to_make_a_request_with_wrong_content_type():
         assert json_data['data'][0]['error-message'] == "Content-type must be json"
         assert json_data['status'] == 202
 
-############################ test to create a red-flag with wrong data ###############################
+### Create a red-flag with wrong data ###
 def test_to_create_a_redflag_with_wrong_data():
     result1= CLIENT().post('/api/v1/red-flags', content_type='application/json',
                            data=json.dumps({}))
@@ -326,7 +314,6 @@ def test_to_create_a_redflag_with_wrong_data():
     assert result3.status_code == 200
     assert result4.status_code == 200
  
-
     json_data1 = json.loads(result1.data)
     json_data2 = json.loads(result2.data)
     json_data3 = json.loads(result3.data)
@@ -347,8 +334,7 @@ def test_to_create_a_redflag_with_wrong_data():
                                                     ]
     assert json_data4['data'][0]['error-message'] == ["location should contain only integers or floats"]
     
-
-######################## tests for deleting a red-flag with wrong username #######################################
+### Deleting a red-flag with wrong username ###
 def test_delete_redflag_with_wrong_username():
     result1 = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
                                         data=json.dumps({"createdBy":"dgfhdjdj"}))
@@ -362,7 +348,7 @@ def test_delete_redflag_with_wrong_username():
     assert json_data1['data'][0]['error-message'] == "invalid username"
     assert json_data2['data'][0]['error-message'] ==  "username is missing. follow this example ->> {'createdBy':'James']}"
 
-############################# tests for checking whethera red-flag already exists #################################
+### Checking if a red-flag already exists ###
 def test_whether_a_redflag_already_exists():
     result = CLIENT().post('/api/v1/red-flags', content_type='application/json',
                            data=json.dumps({"createdBy" : "James",
@@ -374,7 +360,7 @@ def test_whether_a_redflag_already_exists():
     assert "data" in json_data
     assert json_data['data'][0]['error-message'] == "This red-flag already exists, please create a new one."                                     
 
-# ######################### tests for deleting a red-flag using a wrong id ##################################
+### Deleting a red-flag using a wrong id ###
 def test_to_delete_a_redflag_using_a_wrong_id():
     result1 = CLIENT().delete('/api/v1/red-flags/james', content_type='application/json',
                                         data=json.dumps({"createdBy" : "James"}))
