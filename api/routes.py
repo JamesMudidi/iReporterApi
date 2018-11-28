@@ -73,5 +73,6 @@ def page_not_found(e):
     return jsonify ({
         'Hello': 'Welcome to Irepoter',
         'Usage': 'Use the following URLs for testing on postman',
+		'Valid_Urls': 'valid_urls',
         'message': 'Please contact iRepoter for more details on this API.'
         })
