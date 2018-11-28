@@ -72,12 +72,12 @@ def page_not_found(e):
     }
     return jsonify ({
         'Hello': 'Welcome to Irepoter',
-        '......................'
+        '......................': '',
         'Support': 'You will have to view this site with a JSON Formatter for better results',
-        '......................'
+        '......................': '',
 		'Usage': 'Use the following URLs for testing on postman',
-        '......................'
+        '......................': '',
 		'Valid_Urls for the site': valid_urls,
-        '......................'
+        '......................': '',
 		'message': 'Please contact iRepoter for more details on this API.'
         })
