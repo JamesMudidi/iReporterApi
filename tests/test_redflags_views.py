@@ -3,7 +3,7 @@ from flask import json
 from app import app
 CLIENT = app.test_client 
 
-############################# Tests when there are no red-flags ######################################
+### Empty red-flags ###
 def test_when_there_are_no_redflags():
     result = CLIENT().get('/api/v1/red-flags')
     assert result.status_code == 200
@@ -11,7 +11,7 @@ def test_when_there_are_no_redflags():
     assert json_data['data'][0]['message'] == "No red-flags found. Please create one."
 
 
-############################# Tests for addng a new red-flag ######################################
+### Addng a new red-flag ###
 def test_to_create_a_new_redflag():
     """
     Method for addng a new red-flag
@@ -37,7 +37,7 @@ def test_to_create_a_new_redflag():
     assert json_data['data'][0]['comment'] == "collapsed bridges"
     
 
-############################# Tests for getting all red-flags ######################################
+### Getting all red-flags ###
 
 def test_to_get_all_redflags():
     """
@@ -53,7 +53,7 @@ def test_to_get_all_redflags():
     assert json_data['data'][0]['comment'] == "collapsed bridges"
     assert json_data['data'][0]['status'] == "draft"
 
-############################# Tests for getting a specific red-flag ######################################
+### Getting a specific red-flag ###
 def test_to_get_a_specific_redflags():
     """
     Method for fetching a specific red-flag
@@ -68,7 +68,7 @@ def test_to_get_a_specific_redflags():
     assert json_data['data']['comment'] == "collapsed bridges"
     assert json_data['data']['status'] == "draft"
 
-############################# Tests for changing geolocation ######################################
+### Changing geolocation ###
 def test_to_change_geolocation_of_a_redflag():
     """
     Method for changing geolocation
@@ -94,7 +94,7 @@ def test_to_change_geolocation_of_a_redflag():
     assert json_data['data']['comment'] == "collapsed bridges"
     assert json_data['data']['status'] == "draft"
 
-############################# Tests for deleting a red flag ######################################
+### Deleting a red flag ###
 def test_to_delete_a_redflag():
     result = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"createdBy":"James"}))
@@ -112,7 +112,7 @@ def test_to_delete_a_redflag():
     json_data = json.loads(result.data)
     assert json_data['data'][0]['error-message'] == "No red-flag found"
 
-############################# Tests for updating the status of a red-flag ######################################
+### Updating the status of a red-flag ###
 def test_for_updating_redflag_status():
     # make sure there is a red-flag to update
     test_to_create_a_new_redflag()
@@ -127,7 +127,7 @@ def test_for_updating_redflag_status():
     assert json_data['data'][0]['id'] == 1
     assert json_data['data'][0]['message'] == "Updated red-flag record’s location"
 
-###########Tests for checking whether the user can delete a red-flag when the status is promoted###############  
+### Checking if user can delete a red-flag when the status is updated ####  
 def test_to_delete_a_redlag_after_status_update():
     result = CLIENT().delete('/api/v1/red-flags/1', content_type='application/json',
                                         data=json.dumps({"createdBy":"James"}))
@@ -135,7 +135,7 @@ def test_to_delete_a_redlag_after_status_update():
     json_data = json.loads(result.data)
     assert json_data['data'][0]['error-message'] == "You can no longer edit or delete this red-flag"
 
-###########Tests for checking whether the user can change geolocation after red-flag status update###############  
+### Checking if user can change geolocation after red-flag status update ####  
 def test_to_change_geolocation_after_status_update():
     result = CLIENT().put('/api/v1/red-flags/1', content_type='application/json',
                            data=json.dumps({"location" : [0.9090,5.9090]}))
@@ -143,7 +143,7 @@ def test_to_change_geolocation_after_status_update():
     json_data = json.loads(result.data)
     assert json_data['data'][0]['error-message'] == "You can no longer edit or delete this red-flag"
 
-############################# Tests for updating the status of a red-flag ######################################
+### Updating the status of a red-flag ###
 def test_for_updating_redflag_status_with_wrong_values():
     
     result1 = CLIENT().put('/api/v1/update-red-flags/1', content_type='application/json',
