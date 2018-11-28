@@ -1,5 +1,9 @@
 language: python
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=b8e7d7ee8475716a1959a12da4275ed7e2ea7a4acfd0ddba152940495c503ba9
+	
 python:
   - "3.6.5"
 install:
