@@ -71,7 +71,7 @@ def page_not_found(e):
         'Welcome': {'url': '/api/v1/welcome', 'method(s)': 'GET', 'header': 'JWT access token.'}
     }
     return jsonify ({
-        'Issue': 'You have entered an unknown URL.',
-        'Valid URLs': valid_urls,
+        'Hello': 'Welcome to Irepoter',
+        'Usage': 'Use the following URLs for testing on postman',
         'message': 'Please contact iRepoter for more details on this API.'
         })
