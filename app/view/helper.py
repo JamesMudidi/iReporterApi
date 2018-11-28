@@ -17,7 +17,7 @@ class Validators:
         get_errors = []
         if type(get_location) is list:
             if len(get_location) == 2:
-                if (type(get_location[0]) not in [int, float]) or (type(get_location[0]) not in [int, float]):
+                if (type(get_location[0]) not in [float]) or (type(get_location[0]) not in [float]):
                     get_errors.append("location should contain only integers or floats")
             else:
                 get_errors.append("location expects only two parameters in the list")
@@ -28,7 +28,6 @@ class Validators:
             return True
 
         return jsonify({"status":400, "data": [{'error-message' : get_errors}]})
-
 
     def validate_create_redflag(createdBy,location,comment):
         errors = []
@@ -50,5 +49,4 @@ class Validators:
 
         if errors:
             return jsonify({"status":400, "data": [{'error-message' : errors}]})
-
         return True
