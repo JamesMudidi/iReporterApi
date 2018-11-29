@@ -22,6 +22,7 @@ class RedFlagViews(MethodView):
         return Validators.validate_redflag_id(id)
         
     # Create a red-flag record
+    @app.route('/api/v1/signup', methods=['POST'])
     def post(self):
         
         if request.content_type == 'application/json':

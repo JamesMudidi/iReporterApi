@@ -147,7 +147,7 @@ def test_to_change_geolocation_after_status_update():
 def test_for_updating_redflag_status_with_wrong_values():
     
     result1 = CLIENT().put('/api/v1/update-red-flags/1', content_type='application/json',
-                           data=json.dumps({"status" : "fhfhfhfhfhf"}))
+                           data=json.dumps({"status" : "new status"}))
     result2 = CLIENT().put('/api/v1/update-red-flags/1', content_type='application/json',
                            data=json.dumps({}))
     result3 = CLIENT().put('/api/v1/update-red-flags/-1', content_type='application/json',
