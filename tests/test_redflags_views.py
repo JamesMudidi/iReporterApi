@@ -19,7 +19,7 @@ def test_to_create_a_new_redflag():
     result = CLIENT().post('/api/v1/red-flags', content_type='application/json',
                            data=json.dumps({"createdBy" : "James",
                                             "location" : [8.6784, 2.5673],
-                                            "comment" : "collapsed bridges"}))
+                                            "comment" : "land slide"}))
     assert result.status_code == 201
 
     json_data = json.loads(result.data)
@@ -34,7 +34,7 @@ def test_to_create_a_new_redflag():
     assert json_data['data'][0]['id'] == 1
     assert json_data['data'][0]['location'] == [8.6784, 2.5673]
     assert json_data['data'][0]['createdBy'] == "James"
-    assert json_data['data'][0]['comment'] == "collapsed bridges"
+    assert json_data['data'][0]['comment'] == "land slide"
     
 
 ### Getting all red-flags ###
@@ -50,7 +50,7 @@ def test_to_get_all_redflags():
     assert json_data['data'][0]['category'] == "red-flag"
     assert json_data['data'][0]['location'] == [8.6784, 2.5673]
     assert json_data['data'][0]['createdBy'] == "James"
-    assert json_data['data'][0]['comment'] == "collapsed bridges"
+    assert json_data['data'][0]['comment'] == "land slide"
     assert json_data['data'][0]['status'] == "draft"
 
 ### Getting a specific red-flag ###
@@ -65,7 +65,7 @@ def test_to_get_a_specific_redflags():
     assert json_data['data']['category'] == "red-flag"
     assert json_data['data']['location'] == [8.6784, 2.5673]
     assert json_data['data']['createdBy'] == "James"
-    assert json_data['data']['comment'] == "collapsed bridges"
+    assert json_data['data']['comment'] == "landslide"
     assert json_data['data']['status'] == "draft"
 
 ### Changing geolocation ###
@@ -91,7 +91,7 @@ def test_to_change_geolocation_of_a_redflag():
     assert json_data['data']['location'] == [0.9090,5.9090]
     assert json_data['data']['category'] == "red-flag"
     assert json_data['data']['createdBy'] == "James"
-    assert json_data['data']['comment'] == "collapsed bridges"
+    assert json_data['data']['comment'] == "land slide"
     assert json_data['data']['status'] == "draft"
 
 ### Deleting a red flag ###
@@ -277,7 +277,7 @@ def test_to_make_a_request_with_wrong_content_type():
     result1 = CLIENT().post('/api/v1/red-flags', content_type='text',
                            data=json.dumps({"createdBy" : "James",
                                             "location" : [8.6784, 2.5673],
-                                            "comment" : "collapsed bridges"}))
+                                            "comment" : "land slide"}))
     result2 = CLIENT().put('/api/v1/red-flags/1', content_type='text',
                                         data=json.dumps({"location" : [2,3]}))
     result3 = CLIENT().delete('/api/v1/red-flags/1', content_type='text',
@@ -307,7 +307,7 @@ def test_to_create_a_redflag_with_wrong_data():
     result4 = CLIENT().post('/api/v1/red-flags', content_type='application/json',
                            data=json.dumps({"createdBy" : "James",
                                             "location" : ["12.3453", "45.2123"],
-                                            "comment" : "collapsed bridges"}))
+                                            "comment" : "land slide"}))
     
     assert result1.status_code == 200
     assert result2.status_code == 200
@@ -324,7 +324,7 @@ def test_to_create_a_redflag_with_wrong_data():
     assert "data" in json_data3
     assert "data" in json_data4
 
-    assert json_data1['data'][0]['error-message'] == "wrong body format. follow this example ->> {'createdBy':​James​, 'location':​​[12.4567,3.6789]​, 'comment': '​collapsed bridges'"
+    assert json_data1['data'][0]['error-message'] == "wrong body format. follow this example ->> {'createdBy':​James​, 'location':​​[12.4567,3.6789]​, 'comment': '​land slide'"
     assert json_data2['data'][0]['error-message'] == ["createdBy, location, and comment cannot be empty.","location expects only two parameters in the list"]
     assert json_data3['data'][0]['error-message'] == [
                                                         "createdBy, location, and comment cannot be empty.",
@@ -353,7 +353,7 @@ def test_whether_a_redflag_already_exists():
     result = CLIENT().post('/api/v1/red-flags', content_type='application/json',
                            data=json.dumps({"createdBy" : "James",
                                             "location" : [8.6784, 2.5673],
-                                            "comment" : "collapsed bridges"}))
+                                            "comment" : "land slide"}))
     assert result.status_code == 200
 
     json_data = json.loads(result.data)
