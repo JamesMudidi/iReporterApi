@@ -23,7 +23,7 @@ class IncidentsController:
         if not incidents or len(incidents) < 1 :
             return jsonify({
                 "status":200,
-                "message": "No red-flags found"
+                "message": "red-flags does not exist"
             }),200
 
         return jsonify({
@@ -35,7 +35,7 @@ class IncidentsController:
         if not redflag:
             return jsonify({
                 "status":200,
-                "message":"Out of range red-flag id,Try again with a valid id"
+                "message": "Out of range red-flag does not exist"
             }),200
 
         return jsonify({
@@ -54,5 +54,35 @@ class IncidentsController:
             }),200
         return jsonify({
             "status":200,
-            "message":"red-flag out of range, use valid id"
+            "message": "red-flag does not exist"
         }),200
+
+    def patch_redflag_comment(self,_id):
+        redflag=incident_model.get_an_incident(_id)
+        
+        data = request.get_json()
+        if redflag:
+            
+            comment = data.get('comment')
+            new_comment = comment
+            redflag["comment"] = new_comment
+            return jsonify({"incedent":redflag})
+        else:
+            return jsonify({
+            "status":200,
+            "message":"red-flag does not exist"
+            }),200
+
+    def patch_redflag_location(self, _id):
+        redflag = incident_model.get_an_incident(_id)
+        data = request.get_json()
+        if redflag:
+            location = data.get('location')
+            new_location = location
+            redflag["location"] = new_location
+            return jsonify({"incedent": redflag})
+        else:
+            return jsonify({
+                "status": 200,
+                "message": "red-flag does not exist"
+            }), 200

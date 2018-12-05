@@ -9,7 +9,7 @@ class BaseTestCase(unittest.TestCase):
             createdOn = "11-26-2018",
             createdBy = "Turinawe Smith",
             type = "red-flag",
-            location = '0.3972° N, 32.6387° E',
+            location = '0.3972ï¿½ N, 32.6387ï¿½ E',
             status = "draft",
             image = ["Image","Image"],
             video = ["Image","Image"],

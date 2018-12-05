@@ -1,7 +1,7 @@
 incidents = []
 class Incident:
     def __init__(self):
-        self.incidents =incidents
+        self.incidents = incidents
 
     def create_incident(self,args):
         incident=dict(
