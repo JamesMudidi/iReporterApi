@@ -9,10 +9,8 @@ install:
 script:
   - pytest --cov
   - coverage
-  - coverage3 report
   - coveralls 
 
 after_success:
   - coverage
-  - coverage3 report
   - coveralls 
