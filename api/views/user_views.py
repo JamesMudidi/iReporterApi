@@ -1,30 +1,32 @@
+# Import neccessary depencies
+# From the module or framework, we import the class datatype.
+# Using requst to add and access data
+# Using jsonify to generate JSON data
+# Using json for reading JSON data
 from flask import Flask, jsonify, request, json
+from api.controllers.user_controllers import UsersController
 from api import app
-from api.controllers.user_controllers import UsersController, AdminsController
 
-users_controller = UsersController()
-users_controller = AdminsController()
+user_controller = UsersController()
 
-@app.route('/')
-def index():
-    return jsonify({
-        "Application":"iReporter"
-        },
-        {
-        "Create RedFlag": "/api/v1/red-flags",
-        "View all RedFlags": "/api/v1/red-flags",
-        "View single RedFlag": "/api/v1/red-flags/<int:_id",
-        "Patch RedFlag comment": "/api/v1/red-flags/<int:_id>/comment",
-        "Patch RedFlag location": "/api/v1/red-flags/<int:_id>/location",
-        "Delete RedFlag": "api/v1/red-flag/<int:_id>"
-    })
+class user_views:
+	# Route for creating a user
+	@app.route('/api/v1/users', methods=['POST'])
+	def add_user():
+		request_data = request.get_json()
+		return user_controllers.add_user(request_data)
 
-@app.route('/api/v1/users', methods=['POST'])
-def register_user():
-    request_data = request.get_json()
-    return users_controller.add_user(request_data) 
+	# Route for selecting a single user
+	@app.route('/api/v1/users/<int:_id>', methods = ['GET'])
+	def get_specific_user(_id):
+		return user_controllers.get_specific_user(_id)
 
-@app.route('/api/v1/admins', methods=['POST'])
-def register_admin():
-    request_data = request.get_json()
-    return users_controller.add_admin(request_data) 
+	# Route for selecting all users
+	@app.route('/api/v1/users',methods=['GET'])
+	def get_users():
+		return user_controllers.get_all_users()
+
+	# Route for deleting a user
+	@app.route('/api/v1/users/<int:_id>',methods=['DELETE'])
+	def delete_user(_id):
+		return user_controllers.delete_user(_id)
