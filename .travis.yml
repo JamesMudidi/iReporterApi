@@ -11,7 +11,9 @@ script:
   - pytest --cov
   - coverage
   - coveralls 
+  - codeclimate-test-reporter --file .coverage
 
 after_success:
   - coverage
   - coveralls 
+  - codeclimate-test-reporter
