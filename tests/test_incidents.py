@@ -1,7 +1,6 @@
-from tests.test_base import BaseTestCase
 import json
 
-class IncidentTestCase(BaseTestCase):
+class IncidentTestCase():
 
     def test_fetch_all_redflags(self):
         response= self.app.get('/api/v1/red-flags',
