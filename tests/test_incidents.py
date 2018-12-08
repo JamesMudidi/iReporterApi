@@ -1,3 +1,4 @@
+from tests.test_base import BaseTestCase
 import json
 
 class IncidentTestCase(BaseTestCase):
