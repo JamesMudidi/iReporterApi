@@ -10,7 +10,7 @@ admins = []
 # Defining model class for users
 class User:
     def __init__(self):
-        # Assigning information into the users list 
+# Assigning information into the users list 
         self.users = users
 
     # Model for creating users

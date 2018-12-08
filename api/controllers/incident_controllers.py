@@ -24,13 +24,15 @@ class IncidentsController:
     def get_specific_redflag(self,incident_id):
         redflag = incident_models.get_an_incident(incident_id)
         if not redflag:
-            return jsonify({"status": 204, "message": "Given ID is out of range"}), 204
+            return jsonify({"status": 204,
+                "message": "Given ID is out of range"}), 204
         return jsonify({"status": 200, "data":redflag}), 200
     
     def get_all_redflags(self):
         incidents = incident_models.get_incidents()
-        if not incidents or len(incidents) < 1 :
-            return jsonify({"status": 204,"message": "No Incidents available"}),204
+        if not incidents or len(incidents) < 1:
+            return jsonify({"status": 204,
+                "message": "No Incidents available"}), 204
         return jsonify({"status": 200,"data":incidents})
 
     def patch_redflag_comment(self,incident_id):
@@ -54,13 +56,16 @@ class IncidentsController:
             redflag["location"] = new_location
             return jsonify({"incident": redflag})
         else:
-            return jsonify({"status": 204, "message": "Given ID is out of range"}), 204
+            return jsonify({"status": 204,
+                "message": "Given ID is out of range"}), 204
 
     def delete_redflag(self, incident_id):
         redflag = incident_models.get_an_incident(incident_id)
         incidents = incident_models.get_incidents()
         if redflag:
             incidents.remove(redflag)
-            return jsonify({"status": 200, "data":f'{redflag} item has been deleted'}), 200
-        return jsonify({"status": 204, "message": "Given ID is out of range"}), 204
+            return jsonify({"status": 200,
+                "data":f'{redflag} item has been deleted'}), 200
+        return jsonify({"status": 204,
+                "message": "Given ID is out of range"}), 204
 

@@ -17,7 +17,7 @@ class user_views:
         return user_controllers.add_user(request_data)
 
     # Route for selecting a single user
-    @app.route('/api/v1/users/<int:_id>', methods = ['GET'])
+    @app.route('/api/v1/users/<int:_id>', methods=['GET'])
     def get_specific_user(_id):
         return user_controllers.get_specific_user(_id)
 
