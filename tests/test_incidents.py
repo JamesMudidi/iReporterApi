@@ -1,4 +1,3 @@
-from tests.test_base import BaseTestCase
 from api.views import incident_views
 from api.views import user_views
 import json

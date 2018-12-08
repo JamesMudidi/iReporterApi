@@ -10,7 +10,7 @@ script:
   - pytest
   - coverage
   - coveralls 
-  - codeclimate-test-reporter --file .coverage
+  - codeclimate-test-reporter
 
 after_success:
   - coverage
