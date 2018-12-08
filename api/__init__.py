@@ -13,19 +13,19 @@ app = Flask(__name__)
 # Defining what displays in the default route
 def page_not_found(e):
     valid_urls = {
-        '1. Create a RedFlag': {'url': '/api/v1/red-flags', 
-                'method(s)': 'POST', 'body': {'createdBy': 'String', 
+        '1. Create a RedFlag': {'url': '/api/v1/red-flags',
+                'method(s)': 'POST', 'body': {'createdBy': 'String',
                 'incident_type': 'String', 'location': 'Lat Long', 'status': 'String', 
                 'image': 'Image', 'video': 'Video', 'comment': 'string'}},
         '2. View all RedFlags': {'url': '/api/v1/red-flags',
-                'method(s)': 'GET',},
+                'method(s)': 'GET', },
         '3. View a single RedFlag': {'url': '/api/v1/red-flags/<int:_id',
-                'method(s)': 'GET',},
+                'method(s)': 'GET', },
         '4. Patch a RedFlag comment': {'url': '/api/v1/red-flags/<int:_id>/comment',
                 'method(s)': 'PATCH', 'body': {'location': 'Lat Long'}},
-        '5. Patch a RedFlag location': {'url': '/api/v1/red-flags/<int:_id>/location', 
+        '5. Patch a RedFlag location': {'url': '/api/v1/red-flags/<int:_id>/location',
                 'method(s)': 'PATCH', 'body': {'comment': 'string'}},
-        '6. Delete a RedFlag': {'url': 'api/v1/red-flag/<int:_id>', 
+        '6. Delete a RedFlag': {'url': 'api/v1/red-flag/<int:_id>',
                 'method(s)': 'DELETE', },
     }
     return jsonify ({

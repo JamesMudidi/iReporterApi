@@ -31,12 +31,12 @@ class incident_views:
     def patch_redflag_comment(_id):
         return incident_controllers.patch_redflag_comment(_id)
 
-	# Route for changing an incident's location
-	@app.route('/api/v1/incidents/<int:_id>/location', methods=['PATCH'])
-	def patch_redflag_location(_id):
-		return incident_controllers.patch_redflag_location(_id)
+    # Route for changing an incident's location
+    @app.route('/api/v1/incidents/<int:_id>/location', methods=['PATCH'])
+    def patch_redflag_location(_id):
+        return incident_controllers.patch_redflag_location(_id)
 
-	# Route for deleting an incident
-	@app.route('/api/v1/incidents/<int:_id>',methods=['DELETE'])
-	def delete_redflag(_id):
-		return incident_controllers.delete_redflag(_id)
+    # Route for deleting an incident
+    @app.route('/api/v1/incidents/<int:_id>',methods=['DELETE'])
+    def delete_redflag(_id):
+        return incident_controllers.delete_redflag(_id)
