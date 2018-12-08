@@ -19,35 +19,37 @@ class Validate:
             return jsonify({"status":400,"message":"Email field can not be left empty."})
 
         elif not re.match(r"[^@.]+@[A-Za-z]+\.[a-z]+", self.email):
-            return jsonify({"status":400,"message":"Enter a valid email address."})
+            return jsonify({"status":400,
+                "message": "Enter a valid email address."})
 
         elif not self.phone_number or self.phone_number.isspace():
-            return jsonify({"status":400,"message":"Phone number field can not be left empty."})
+            return jsonify({"status":400,"message": "Phone number field can not be left empty."})
         return isinstance(phone_number, int)
 
     def validate_security(self):
         if not self.username or self.ussername.isspace():
-            return jsonify({"status":400,"message":"Username field can not be left empty."})
+            return jsonify({"status":400,"message": "Username field can not be left empty."})
 
         elif not self.password or self.password.isspace():
-            return jsonify({"status":400,"message":"Password field can not be left empty."})
+            return jsonify({"status":400,"message": "Password field can not be left empty."})
 
         elif len(self.password) < 8:
-            return jsonify({"status":400,"message":"Password has to be longer than 8 characters."})
+            return jsonify({"status":400,
+                "message": "Password has to be longer than 8 characters."})
     
     def check_user_exist(self):
         if username != None:
-            return jsonify({"status":400,"message":"Username is taken."})
+            return jsonify({"status":400,"message": "Username is taken."})
         if email != None:
-            return jsonify({"status":400,"message":"Email already has an account."})
+            return jsonify({"status":400,"message": "Email already has an account."})
         if phone_number != None:
-            return jsonify({"status":400,"message":"Phone number is taken."})
+            return jsonify({"status":400,"message": "Phone number is taken."})
 
     @staticmethod
     def login_validate(username, password):
         if not username or username.isspace():
-            return jsonify({"status":400,"message":"Username field can not be left empty."})
+            return jsonify({"status":400,"message": "Username field can not be left empty."})
         elif not password or password.isspace():
-            return jsonify({"status":400,"message":"Password field can not be left empty."})
+            return jsonify({"status":400,"message": "Password field can not be left empty."})
         else:
             return False

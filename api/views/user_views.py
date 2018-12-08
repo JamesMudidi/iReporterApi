@@ -21,10 +21,10 @@ class user_views:
 	def get_specific_user(_id):
 		return user_controllers.get_specific_user(_id)
 
-	# Route for selecting all users
-	@app.route('/api/v1/users',methods=['GET'])
-	def get_users():
-		return user_controllers.get_all_users()
+    # Route for selecting all users
+    @app.route('/api/v1/users',methods=['GET'])
+    def get_users():
+        return user_controllers.get_all_users()
 
 	# Route for deleting a user
 	@app.route('/api/v1/users/<int:_id>',methods=['DELETE'])

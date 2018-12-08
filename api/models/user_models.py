@@ -17,16 +17,16 @@ class User:
     # Used args to pass a variable number of arguments
     def create_user(self, args):
         user = dict(
-            user_id = len(self.users)+1,
-            firstname = args['firstname'],
-            lastname = args['lastname'],
-            othernames = args['othernames'],
-            email = args['email'],
-            phone_number = args['phone_number'],
-            username = args['username'],
-            password = args['password'],
-            registered = datetime.datetime.now(),
-            is_admin = False
+            user_id=len(self.users)+1,
+            firstname=args['firstname'],
+            lastname=args['lastname'],
+            othernames=args['othernames'],
+            email=args['email'],
+            phone_number=args['phone_number'],
+            username=args['username'],
+            password=args['password'],
+            registered=datetime.datetime.now(),
+            is_admin=False
         )
         # Adding a new user from the user dictionary to the self.users list
         self.users.append(user)

@@ -16,15 +16,15 @@ class Incident:
     # Used args to pass a variable number of arguments
     def create_incident(self, args):
         incident = dict(
-            incident_id = len(self.incidents)+1,
-            createdOn = datetime.datetime.now(),
-            createdBy = args['createdBy'],
-            incident_type = args['type'],
-            location = args['location'],
-            status = args['status'],
-            image = args['image'],
-            video = args['video'],
-            comment = args['comment']
+            incident_id=len(self.incidents)+1,
+            createdOn=datetime.datetime.now(),
+            createdBy=args['createdBy'],
+            incident_type=args['type'],
+            location=args['location'],
+            status=args['status'],
+            image=args['image'],
+            video=args['video'],
+            comment=args['comment']
         )
         # Adding a new item from the incident dictionary to the self.incidents list
         self.incidents.append(incident)
