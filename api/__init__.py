@@ -5,8 +5,6 @@ import json
 from api.views import incident_views
 from api.views import user_views
 
-app = Flask(__name__)
-
 # Default error page
 @app.errorhandler(404)
 
@@ -28,3 +26,5 @@ def page_not_found(e):
         '4. Message': 'Please contact iRepoter for more details on this API.',
         '2. Support': 'You will have to view this site with a JSON Formatter for better results',
        })
+
+app = Flask(__name__)
