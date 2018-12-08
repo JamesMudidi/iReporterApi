@@ -8,12 +8,10 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - pytest --cov
-  - coverage
-  - coveralls 
-  - codeclimate-test-reporter --file .coverage
-
+    - pytest
+    - coverage run --source app -m py.test
+    - coverage report -m
+    - codeclimate-test-reporter --file .coverage
 after_success:
-  - coverage
-  - coveralls 
+  - coveralls
   - codeclimate-test-reporter
