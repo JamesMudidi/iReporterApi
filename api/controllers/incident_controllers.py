@@ -42,7 +42,8 @@ class IncidentsController:
             redflag["comment"] = new_comment
             return jsonify({"incident":redflag})
         else:
-            return jsonify({"status":204,"message":"Given ID is out of range"}),204
+            return jsonify({"status": 204,
+                "message": "Given ID is out of range"}),204
 
     def patch_redflag_location(self, incident_id):
         redflag = incident_models.get_an_incident(incident_id)

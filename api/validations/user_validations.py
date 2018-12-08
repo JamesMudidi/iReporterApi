@@ -40,7 +40,7 @@ class Validate:
                     "message": "Password field can not be left empty."})
 
         elif len(self.password) < 8:
-            return jsonify({"status":400,
+            return jsonify({"status": 400,
                 "message": "Password has to be longer than 8 characters."})
     
     def check_user_exist(self):

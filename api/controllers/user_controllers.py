@@ -10,7 +10,6 @@ user_models = User()
 
 # Defining controller class for users
 class UsersController:
-    
     def __init__(self):
         # Create a list to save the information generated
         self.users = []
@@ -21,7 +20,7 @@ class UsersController:
             return jsonify({"message":"No user found"}), 204
         return jsonify({"status":201,"user":user}), 201
 
-    def get_specific_user(self,user_id):
+    def get_specific_user(self, user_id):
         user = user_models.get_user(user_id)
         if not user:
             return jsonify({"status":204,"message": "Given user ID is out of range"}),204

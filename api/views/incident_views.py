@@ -10,21 +10,21 @@ from api import app
 incident_controller = IncidentsController()
 
 class incident_views:
-	# Route for creating an incident
-	@app.route('/api/v1/incidents',methods=['POST'])
-	def add_redflag():
-		request_data=request.get_json()
-		return incident_controllers.add_redflag(request_data)
+    # Route for creating an incident
+    @app.route('/api/v1/incidents',methods=['POST'])
+    def add_redflag():
+        request_data=request.get_json()
+        return incident_controllers.add_redflag(request_data)
 
-	# Route for selecting a single incident
-	@app.route('/api/v1/incidents/<int:_id>', methods = ['GET'])
-	def get_single_redflag(_id):
-		return incident_controllers.get_specific_redflag(_id)
+    # Route for selecting a single incident
+    @app.route('/api/v1/incidents/<int:_id>', methods = ['GET'])
+    def get_single_redflag(_id):
+        return incident_controllers.get_specific_redflag(_id)
 
-	# Route for selecting all incidents
-	@app.route('/api/v1/incidents',methods=['GET'])
-	def get_redflags():
-		return incident_controllers.get_all_redflags()
+    # Route for selecting all incidents
+    @app.route('/api/v1/incidents',methods=['GET'])
+    def get_redflags():
+        return incident_controllers.get_all_redflags()
 
     # Route for changing an incident's comment
     @app.route('/api/v1/incidents/<int:_id>/comment', methods=['PATCH'])
