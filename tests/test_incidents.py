@@ -1,5 +1,3 @@
-from api.views import incident_views
-from api.views import user_views
 import json
 
 class IncidentTestCase(BaseTestCase):
