@@ -23,12 +23,13 @@ class UsersController:
     def get_specific_user(self, user_id):
         user = user_models.get_user(user_id)
         if not user:
-            return jsonify({"status":204,"message": "Given user ID is out of range"}),204
+            return jsonify({"status":204,"message": 
+                "Given user ID is out of range"}),204
         return jsonify({"status":200,"data":user}),200
     
     def get_all_users(self):
         users = user_models.get_users()
-        if not userss or len(users) < 1 :
+        if not userss or len(users) < 1:
             return jsonify({"status":204,"message": "No Users available"}),204
         return jsonify({"status":200,"data":users})
 
@@ -37,5 +38,5 @@ class UsersController:
         users = user_models.get_users()
         if user:
             users.remove(user)
-            return jsonify({"status":200,"data":f'{user} item has been deleted'}),200
-        return jsonify({"status":204,"message": "Given user ID is out of range"}),204
+            return jsonify({"status":200, "data":f'{user} item has been deleted'}),200
+        return jsonify({"status":204, "message": "Given user ID is out of range"}),204
