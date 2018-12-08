@@ -9,7 +9,7 @@ from api import app
 
 user_controller = UsersController()
 
-class user_views:
+class user_views:  
 	# Route for creating a user
 	@app.route('/api/v1/users', methods=['POST'])
 	def add_user():

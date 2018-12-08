@@ -26,10 +26,10 @@ class incident_views:
 	def get_redflags():
 		return incident_controllers.get_all_redflags()
 
-	# Route for changing an incident's comment
-	@app.route('/api/v1/incidents/<int:_id>/comment', methods=['PATCH'])
-	def patch_redflag_comment(_id):
-		return incident_controllers.patch_redflag_comment(_id)
+    # Route for changing an incident's comment
+    @app.route('/api/v1/incidents/<int:_id>/comment', methods=['PATCH'])
+    def patch_redflag_comment(_id):
+        return incident_controllers.patch_redflag_comment(_id)
 
 	# Route for changing an incident's location
 	@app.route('/api/v1/incidents/<int:_id>/location', methods=['PATCH'])

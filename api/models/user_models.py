@@ -55,18 +55,19 @@ class Admin(User):
     # Used args to pass a variable number of arguments
     def create_admin(self, args):
         admin = dict(
-            admin_id = len(self.admins)+1,
-            firstname = args['firstname'],
-            lastname = args['lastname'],
-            othernames = args['othernames'],
-            email = args['email'],
-            phone_number = args['phone_number'],
-            username = args['username'],
-            password = args['password'],
-            registered = datetime.datetime.now(),
-            is_admin = True
+            admin_id=len(self.admins)+1,
+            firstname=args['firstname'],
+            lastname=args['lastname'],
+            othernames=args['othernames'],
+            email=args['email'],
+            phone_number=args['phone_number'],
+            username=args['username'],
+            password=args['password'],
+            registered=datetime.datetime.now(),
+            is_admin=True
         )
-        # Adding a new admin user from the admin user dictionary to the self.admins list
+        # Adding a new admin user from the admin user dictionary
+        # to the self.admins list
         self.admins.append(admin)
         return admin
 
