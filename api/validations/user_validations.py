@@ -27,13 +27,13 @@ class Validate:
 
         elif not self.phone_number or self.phone_number.isspace():
             return jsonify({"status": 400,
-                        "message": "Phone number field can not be left empty."})
+                "message": "Phone number field can not be left empty."})
         return isinstance(phone_number, int)
 
     def validate_security(self):
         if not self.username or self.ussername.isspace():
             return jsonify({"status": 400,
-                    "message": "Username field can not be left empty."})
+                "message": "Username field can not be left empty."})
 
         elif not self.password or self.password.isspace():
             return jsonify({"status": 400,
@@ -44,13 +44,13 @@ class Validate:
                 "message": "Password has to be longer than 8 characters."})
     
     def check_user_exist(self):
-        if username != None:
+        if username is not None:
             return jsonify({"status": 400,
-                    "message": "Username is taken."})
+                "message": "Username is taken."})
         if email != None:
             return jsonify({"status": 400,
-                    "message": "Email already has an account."})
-        if phone_number != None:
+                "message": "Email already has an account."})
+        if phone_number is not None:
             return jsonify({"status": 400,
                 "message": "Phone number is taken."})
 

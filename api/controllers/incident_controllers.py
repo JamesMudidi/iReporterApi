@@ -15,13 +15,13 @@ class IncidentsController:
         # Create a list to save the information generated
         self.incidents = []
 
-    def add_redflag(self,args):
+    def add_redflag(self, args):
         redflag = incident_models.create_incident(args)
         if not redflag:
             return jsonify({"message":"No incidents found"}), 204
         return jsonify ({"status": 201, "red-flag":redflag}), 201
 
-    def get_specific_redflag(self,incident_id):
+    def get_specific_redflag(self, incident_id):
         redflag = incident_models.get_an_incident(incident_id)
         if not redflag:
             return jsonify({"status": 204,
@@ -33,9 +33,9 @@ class IncidentsController:
         if not incidents or len(incidents) < 1:
             return jsonify({"status": 204,
                 "message": "No Incidents available"}), 204
-        return jsonify({"status": 200,"data":incidents})
+        return jsonify({"status": 200, "data":incidents})
 
-    def patch_redflag_comment(self,incident_id):
+    def patch_redflag_comment(self, incident_id):
         redflag = incident_models.get_an_incident(incident_id)
         data = request.get_json()
         if redflag:

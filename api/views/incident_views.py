@@ -12,17 +12,17 @@ incident_controller = IncidentsController()
 class incident_views:
     # Route for creating an incident
     @app.route('/api/v1/incidents',methods=['POST'])
-    def add_redflag():
+    def add_redflag(): 
         request_data=request.get_json()
         return incident_controllers.add_redflag(request_data)
 
     # Route for selecting a single incident
-    @app.route('/api/v1/incidents/<int:_id>', methods = ['GET'])
+    @app.route('/api/v1/incidents/<int:_id>', methods=['GET'])
     def get_single_redflag(_id):
         return incident_controllers.get_specific_redflag(_id)
 
     # Route for selecting all incidents
-    @app.route('/api/v1/incidents',methods=['GET'])
+    @app.route('/api/v1/incidents', methods=['GET'])
     def get_redflags():
         return incident_controllers.get_all_redflags()
 
@@ -37,6 +37,6 @@ class incident_views:
         return incident_controllers.patch_redflag_location(_id)
 
     # Route for deleting an incident
-    @app.route('/api/v1/incidents/<int:_id>',methods=['DELETE'])
+    @app.route('/api/v1/incidents/<int:_id>', methods=['DELETE'])
     def delete_redflag(_id):
         return incident_controllers.delete_redflag(_id)

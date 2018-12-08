@@ -25,7 +25,7 @@ def page_not_found(e):
                 'method(s)': 'PATCH', 'body': {'location': 'Lat Long'}},
         '5. Patch a RedFlag location': {'url': '/api/v1/red-flags/<int:_id>/location',
                 'method(s)': 'PATCH', 'body': {'comment': 'string'}},
-        '6. Delete a RedFlag': {'url': 'api/v1/red-flag/<int:_id>',
+        '6. Delete a RedFlag': {'url': 'api/v1/red-flag/<int:_id>', 
                 'method(s)': 'DELETE', },
     }
     return jsonify ({
