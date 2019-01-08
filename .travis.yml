@@ -5,14 +5,13 @@ python:
   
 install:
   - pip install -r requirements.txt
+  - pip install coveralls
 
 script:
   - pytest
   - coverage
   - coveralls 
-  - codeclimate-test-reporter
 
 after_success:
   - coverage
-  - coveralls 
-  - codeclimate-test-reporter
+  - coveralls
