@@ -1,61 +1,27 @@
-'''
-Import relevant dependencies
-datetime for the date and time
-'''
-from flask import jsonify
-import datetime
-import geocoder
-
-# Create a list to save the created incidents
-incidents_list = []
-
-# Defining model class for incidents
+incidents = []
 class Incident:
-    incidents_list = []
+    def __init__(self):
+        self.incidents = incidents
 
-    def __init__(self, incidentId, createdOn, createdBy, incidentType,
-                location, status, images, videos, comment):
-        self.incidentId=len(incidents_list)+1
-        self.createdOn=datetime.datetime.now()
-        self.createdBy=createdBy
-        self.incidentType=incidentType
-        self.location=geocoder.ip('me')
-        self.status=status
-        self.images=images
-        self.videos=videos
-        self.comment=comment
+    def create_incident(self,args):
+        incident=dict(
+            _id= len(self.incidents)+1,
+            createdOn =args['createdOn'],
+            createdBy=args['createdBy'],
+            type = args['type'],
+            location = args['location'],
+            status = args['status'],
+            image = args['image'],
+            video = args['video'],
+            comment = args['comment']
+        )
+        self.incidents.append(incident)
+        return incident
 
-    def incident_dict(self):
-        incidents = {
-             "incidentId":self.incidentId,
-             "createdOn":self.createdOn,
-             "createdBy":self.createdBy,
-             "incidentType":self.incidentType,
-             "location":self.location,
-             "status":self.status,
-             "images":self.images,
-             "videos":self.videos,
-             "comment":self.comment
-        }
-        self.incidents_list.append(incidents)
-        return jsonify({
-            'status':200,
-            'data':incidents,
-            'message':'user successfully registered'
-            })
+    def get_incidents(self):
+        return self.incidents
 
-# Defining model class for the redflag incident and inheriting the incident class
-class Redflag(Incident):
-    def __init__(self, incidentId, createdOn, createdBy, incidentType,
-                location, status, images, videos, comment):
-        super().__init__(incidentId, createdOn, createdBy,
-                location, status, images, videos, comment)
-        self.incidentType=Redflag
-
-# Defining model class for the intervention incident and inheriting the incident class
-class Intervention(Incident):
-    def __init__(self, incidentId, createdOn, createdBy, incidentType,
-                location, status, images, videos, comment):
-        super().__init__(incidentId, createdOn, createdBy,
-                location, status, images, videos, comment)
-        self.incidentType=Intervention
+    def get_an_incident(self,_id):
+        for incident in self.incidents:
+            if incident['_id'] ==_id:
+                return incident
