@@ -41,7 +41,7 @@ pytz==2018.7
 PyYAML==3.13
 ratelim==0.1.6
 requests==2.21.0
-six==1.12.0
+six==1.11.0
 urllib3==1.24.1
 virtualenv==16.1.0
 virtualenv-clone==0.4.0
