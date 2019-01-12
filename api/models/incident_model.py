@@ -7,6 +7,8 @@ import datetime
 
 # Create a list to save the created incidents
 incidents=[]
+redflags=[]
+interventions=[]
 
 # Defining model class for incidents
 class Incident:
@@ -31,29 +33,47 @@ class Incident:
     def get_incidents(self):
         return self.incidents
 
-    def get_an_incident(self,incidentId):
-        for incident in self.incidents:
-            if incident['incidentId']==incidentId:
-                return incident
+# Defining model class for the Redflag and inheriting the incident class
+class Redflag(Incident):
+    def __init__(self):
+        self.redflags=redflags
+
+        super().__init__(args)
+            redflag=dict(
+                incidentType=Redflag
+            )
+        self.redflags.append(redflag)
+        return redflag
 
     def get_redflags(self,incidentType):
         for incident in self.incidents:
             if incident['incidentType']==Redflag:
                 return incident
 
+    def get_a_redflag(self,incidentId):
+        for redflag in self.redflags:
+            if redflag['incidentId']==incidentId:
+                return redflag
+
+
+# Defining model class for the Redflag and inheriting the incident class
+class Intervention(Incident):
+    def __init__(self):
+        self.incidents=incidents
+
+        super().__init__(args)
+            redflag=dict(
+                incidentType=Intervention
+            )
+        self.interventions.append(intervention)
+        return intervention
+
     def get_interventions(self,incidentType):
-        for incident in self.incidents:
-            if incident['incidentType']==Intervention:
-                return incident
+    for incident in self.incidents:
+        if incident['incidentType']==Intervention:
+            return incident
 
-# Defining model class for the Redflag and inheriting the incident class
-class Redflag(Incident):
-    def __init__(self):
-        super().__init__(args)
-        self.incidentType=Redflag
-
-# Defining model class for the Redflag and inheriting the incident class
-class Interventon(Incident):
-    def __init__(self):
-        super().__init__(args)
-        self.incidentType=Interventon
+    def get_an_intervention(self,incidentId):
+        for intervention in self.interventions:
+            if intervention['incidentId']==incidentId:
+                return intervention

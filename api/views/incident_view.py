@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, json
 from api import app
-from api.controllers.incidents_controller import IncidentsController
+from api.controllers.incident_controller import IncidentsController
 
 incidents_controller=IncidentsController()
 @app.route('/api/v1/red-flags',methods=['GET'])
