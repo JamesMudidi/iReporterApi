@@ -7,16 +7,16 @@ install:
 
 before_success:
   - coveralls
-  - coverage
+  - coverage report
   - coverage3 report
 
 script:
   - pytest --cov
-  - coverage
+  - coverage report
   - coverage3 report
   - coveralls 
 
 after_success:
   - coveralls
-  - coverage
+  - coverage report
   - coverage3 report
