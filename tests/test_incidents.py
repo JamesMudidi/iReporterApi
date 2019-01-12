@@ -1,6 +1,6 @@
 from tests.test_base import BaseTestCase
-from api.views import incident_views
-from api.views import user_views
+from api.views import incident_view
+from api.views import user_view
 import json
 
 class IncidentTestCase(BaseTestCase):
