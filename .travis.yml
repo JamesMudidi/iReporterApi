@@ -5,12 +5,8 @@ python:
 install:
   - pip install -r requirements.txt
 
-before_success:
-  - coverage run run.py
-
 script:
   - pytest
-  - coverage report
   - coveralls 
 
 after_success:
