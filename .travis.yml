@@ -7,7 +7,7 @@ install:
 
 script:
   - pytest --cov
-  - coverage run run.py
+  - coverage
   - coveralls 
 
 after_success:
