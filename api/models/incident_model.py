@@ -33,15 +33,20 @@ class Incident:
     def get_incidents(self):
         return self.incidents
 
+    def get_an_incident(self,incidentId):
+        for incident in self.incidents:
+            if incident['incidentId']==incidentId:
+                return incident
+
 # Defining model class for the Redflag and inheriting the incident class
 class Redflag(Incident):
     def __init__(self):
         self.redflags=redflags
 
         super().__init__(args)
-            redflag=dict(
-                incidentType=Redflag
-            )
+        redflag=dict(
+            incidentType=Redflag
+        )
         self.redflags.append(redflag)
         return redflag
 
@@ -62,16 +67,16 @@ class Intervention(Incident):
         self.incidents=incidents
 
         super().__init__(args)
-            redflag=dict(
-                incidentType=Intervention
-            )
+        intervention=dict(
+            incidentType=Intervention
+        )
         self.interventions.append(intervention)
         return intervention
 
     def get_interventions(self,incidentType):
-    for incident in self.incidents:
-        if incident['incidentType']==Intervention:
-            return incident
+        for incident in self.incidents:
+            if incident['incidentType']==Intervention:
+                return incident
 
     def get_an_intervention(self,incidentId):
         for intervention in self.interventions:
