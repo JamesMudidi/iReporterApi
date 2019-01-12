@@ -53,7 +53,7 @@ class Redflag(Incident):
         self.incidentType=Redflag
 
 # Defining model class for the Redflag and inheriting the incident class
-class Interventon(Incident):
+class Intervention(Incident):
     def __init__(self):
         super().__init__(args)
-        self.incidentType=Interventon
+        self.incidentType=Intervention
