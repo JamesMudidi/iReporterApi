@@ -64,7 +64,7 @@ class Redflag(Incident):
 # Defining model class for the Redflag and inheriting the incident class
 class Intervention(Incident):
     def __init__(self):
-        self.incidents=incidents
+        self.interventions=interventions
 
         super().__init__(args)
         intervention=dict(
