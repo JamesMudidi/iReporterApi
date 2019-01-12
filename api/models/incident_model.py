@@ -1,19 +1,19 @@
-incidents = []
+incidents=[]
 class Incident:
     def __init__(self):
-        self.incidents = incidents
+        self.incidents=incidents
 
     def create_incident(self,args):
         incident=dict(
             _id= len(self.incidents)+1,
-            createdOn =args['createdOn'],
+            createdOn=args['createdOn'],
             createdBy=args['createdBy'],
-            type = args['type'],
-            location = args['location'],
-            status = args['status'],
-            image = args['image'],
-            video = args['video'],
-            comment = args['comment']
+            type=args['type'],
+            location=args['location'],
+            status=args['status'],
+            image=args['image'],
+            video=args['video'],
+            comment=args['comment']
         )
         self.incidents.append(incident)
         return incident
@@ -23,5 +23,5 @@ class Incident:
 
     def get_an_incident(self,_id):
         for incident in self.incidents:
-            if incident['_id'] ==_id:
+            if incident['_id']==_id:
                 return incident

@@ -7,9 +7,8 @@ app =Flask(__name__)
 def test():
 	return jsonify(
         {'Application' : 'iRepoter'},
-        {
-        '1. Greetings': 'Welcome to the iRepoter API',
-        '2. Help': 'For further assistance contact James Mudidi on mudidi.jimmy@gmail.com.',
+        {'1. Greetings': 'Welcome to the iRepoter API'},
+        {'2. Help': 'For further assistance contact James Mudidi on mudidi.jimmy@gmail.com.',
         })
 
 from api.views import incident_view
