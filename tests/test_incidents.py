@@ -46,7 +46,7 @@ class IncidentTestCase(BaseTestCase):
     def test_delete_redflag(self):
         response=self.app.delete('/api/v1/red-flags/1',
         content_type='application/json',)
-        # self.assertEqual(response.status_code,200)
+        self.assertEqual(response.status_code,200)
         self.assertTrue(len(self.incidents),1)
         # self.assertIn("item has been deleted",str(response.data))
 
