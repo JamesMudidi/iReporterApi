@@ -7,9 +7,9 @@ install:
 
 script:
   - pytest
-  - coverage report
+  - coverage3 report
   - coveralls 
 
 after_success:
   - coveralls
-  - coverage report
+  - coverage3 report
