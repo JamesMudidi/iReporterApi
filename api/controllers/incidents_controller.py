@@ -1,4 +1,10 @@
-from api.models.incident_model import Incident
+'''
+Import neccessary depencies
+From the module or framework, we import the class datatype.
+Using requst to add and access data
+Using jsonify to generate JSON data
+'''
+from api.models.incident_model import Incident, Redflag, Intervention
 from flask import jsonify, request
 
 incident_model = Incident()
@@ -7,15 +13,15 @@ class IncidentsController:
     def __init__(self):
         self.incidents = []
 
-    def add_redflag(self,args):
-        redflag = incident_model.create_incident(args)
-        if not redflag:
+    def add_Incident(self,args):
+        Incident = incident_model.create_incident(args)
+        if not Incident:
             return jsonify({
-                "message":"No red-flags found"
+                "message":"No Incident found"
             }),200
         return jsonify ({
             "status":201,
-            "red-flag":redflag
+            "Incident":Incident
         }),201
 
     def fetch_all_redflags(self):
