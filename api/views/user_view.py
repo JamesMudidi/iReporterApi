@@ -1,47 +1,24 @@
-'''
-Import neccessary depencies
-From the module or framework, we import the class datatype.
-Using requst to add and access data
-Using jsonify to generate JSON data
-Using json for reading JSON data
-'''
 from flask import Flask, jsonify, request, json
 from api import app
-from api.controllers import user_controller
+from api.controllers.users_controller import UsersController
 
-class user_views:  
-    # Route for creating a user
-    @app.route('/api/v1/auth/users/signup', methods=['POST'])
-    def register_user():
-        data=request.get_json()
-        return user_controller.add_user(data)
+users_controller = UsersController()
 
-    # Route for creating an admin user
-    @app.route('/api/v1/auth/admin/signup', methods=['POST'])
-    def register_admin():
-        data=request.get_json()
-        return user_controller.add_user(data)
+@app.route('/')
+def index():
+    return jsonify({
+        "Application":"iReporter"
+        },
+        {
+        "Create RedFlag": "/api/v1/red-flags",
+        "View all RedFlags": "/api/v1/red-flags",
+        "View single RedFlag": "/api/v1/red-flags/<int:_id",
+        "Patch RedFlag comment": "/api/v1/red-flags/<int:_id>/comment",
+        "Patch RedFlag location": "/api/v1/red-flags/<int:_id>/location",
+        "Delete RedFlag": "api/v1/red-flag/<int:_id>"
+    })
 
-    # Route for user signin
-    @app.route('/api/v1/auth/users/signin', methods=['POST'])
-    def signin():
-        data=request.get_json()
-        username=data.get('username')
-        password=data.get('password')
-        if username==data.get('username') and password==data.get('password'):
-            return jsonify({
-                'status':200,
-                'message':f'{username}, welcome to the iRepoter API'
-                })
-
-    # Route for admin signin
-    @app.route('/api/v1/auth/admin/signin', methods=['POST'])
-    def admin_signin():
-        data=request.get_json()
-        username=data.get('username')
-        password=data.get('password')
-        if username==data.get('username') and password==data.get('password'):
-            return jsonify({
-                'status':200,
-                'message':f'{username}, welcome to the admin pannel of the iRepoter API'
-                })
+@app.route('/api/v1/users', methods=['POST'])
+def register_user():
+    request_data = request.get_json()
+    return users_controller.add_user(request_data) 

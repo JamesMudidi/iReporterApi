@@ -1,4 +1,4 @@
-from api.models.user_models import User
+from api.models.user_model import User
 from flask import jsonify, request
 
 user_model = User()

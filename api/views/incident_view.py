@@ -1,102 +1,31 @@
-'''
-Import neccessary depencies
-From the module or framework, we import the class datatype.
-Using requst to add and access data
-Using jsonify to generate JSON data
-Using json for reading JSON data
-'''
 from flask import Flask, jsonify, request, json
 from api import app
-from api.controllers import incident_controller
+from api.controllers.incidents_controller import IncidentsController
 
-class incident_views:
+incidents_controller=IncidentsController()
+@app.route('/api/v1/red-flags',methods=['GET'])
+def fetch_red_flags():
+    return incidents_controller.fetch_all_redflags()
 
-    # Route for creating a redflag
-    @app.route('/api/v1/incident/redflag', methods=['POST'])
-    def create_redflag():
-        data=request.get_json()
-        return incident_controller.add_incident(data)
+@app.route('/api/v1/red-flags/<int:_id>', methods = ['GET'])
+def fetch_single_red_flag(_id):
+    return incidents_controller.fetch_specific_redflag(_id)
 
-    # Route for creating an intervention
-    @app.route('/api/v1/incident/intervention', methods=['POST'])
-    def create_intervention():
-        data=request.get_json()
-        return incident_controller.add_incident(data)
+@app.route('/api/v1/red-flags',methods=['POST'])
+def add_red_flag():
+    request_data=request.get_json()
+    return incidents_controller.add_redflag(request_data)
 
-    # Route for viewing a single redflag
-    @app.route('/api/v1/incident/redflag/<incidentId>', methods=['GET'])
-    def get_a_redflag():
-        data=request.get_json()
-        return incident_controller.get_a_redflag(data)
+@app.route('/api/v1/red-flags/<int:_id>',methods=['DELETE'])
+def delete_redflag(_id):
+    return incidents_controller.delete_redflag(_id)
 
-    # Route for viewing a single intervention
-    @app.route('/api/v1/incident/intervention/<incidentId>', methods=['GET'])
-    def get_an_intervention():
-        data=request.get_json()
-        return incident_controller.get_an_intervention(data)
 
-    # Route for viewing all incidents
-    @app.route('/api/v1/incident/incidents', methods=['GET'])
-    def get_all_incidents():
-        data=request.get_json()
-        return incident_controller.get_all_incidents(data)
+@app.route('/api/v1/red-flags/<int:_id>/comment', methods=['PATCH'])
+def patch_redflag_comment(_id):
+    return incidents_controller.patch_redflag_comment(_id)
 
-    # Route for viewing all Redflags
-    @app.route('/api/v1/incident/redflags', methods=['GET'])
-    def get_all_redflags():
-        data=request.get_json()
-        return incident_controller.get_all_redflags(data)
 
-    # Route for viewing all Interventions
-    @app.route('/api/v1/incident/interventions', methods=['GET'])
-    def get_all_interventions():
-        data=request.get_json()
-        return incident_controller.get_all_interventions(data)
-
-    # Route for editing Redflag location
-    @app.route('/api/v1/incident/redflag/<incidentId>/location', methods=['PATCH'])
-    def edit_redflag_location():
-        data=request.get_json()
-        return incident_controller.edit_redflag_location(data)
-
-    # Route for editing Intervention location
-    @app.route('/api/v1/incident/intervention/<incidentId>/location', methods=['PATCH'])
-    def edit_intervention_location():
-        data=request.get_json()
-        return incident_controller.edit_intervention_location(data)
-
-    # Route for editing Redflag comment
-    @app.route('/api/v1/incident/redflag/<incidentId>/comment', methods=['PATCH'])
-    def edit_redflag_comment():
-        data=request.get_json()
-        return incident_controller.edit_redflag_comment(data)
-
-    # Route for editing Intervention comment
-    @app.route('/api/v1/incident/intervention/<incidentId>/comment', methods=['PATCH'])
-    def edit_intervention_comment():
-        data=request.get_json()
-        return incident_controller.edit_intervention_comment(data)
-
-    # Route for editing Redflag status
-    @app.route('/api/v1/incident/redflag/<incidentId>/status', methods=['PATCH'])
-    def edit_redflag_status():
-        data=request.get_json()
-        return incident_controller.edit_redflag_status(data)
-
-    # Route for editing Intervention status
-    @app.route('/api/v1/incident/intervention/<incidentId>/status', methods=['PATCH'])
-    def edit_intervention_status():
-        data=request.get_json()
-        return incident_controller.edit_intervention_status(data)
-
-    # Route for deleting a redflag
-    @app.route('/api/v1/incident/redflag/<incidentId>', methods=['DELETE'])
-    def delete_redflag():
-        data=request.get_json()
-        return incident_controller.delete_redflag(data)
-
-    # Route for deleting an intervention
-    @app.route('/api/v1/incident/intervention/<incidentId>', methods=['DELETE'])
-    def delete_intervention():
-        data=request.get_json()
-        return incident_controller.delete_intervention(data)
+@app.route('/api/v1/red-flags/<int:_id>/location', methods=['PATCH'])
+def patch_redflag_location(_id):
+    return incidents_controller.patch_redflag_location(_id)

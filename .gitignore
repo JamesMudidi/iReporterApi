@@ -1,6 +1,6 @@
 venv
-__pycache__
 htmlcov
+__pycache__
+.pytest_cache
 .vscode
-.vs
 .coverage
