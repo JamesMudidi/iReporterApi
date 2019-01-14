@@ -1,6 +1,8 @@
-venv
-htmlcov
-__pycache__
-.pytest_cache
-.vscode
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.idea/
 .coverage
+.vscode
+.coveralls.yml

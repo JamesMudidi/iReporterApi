@@ -1,15 +1,14 @@
-# Import neccessary depencies
-# From the module or framework, we import the class datatype.
-from flask import Flask, jsonify, request
-app =Flask(__name__)
+from flask import Flask
+# from flask_cors import CORS
+# from app.db import create_tables
 
-@app.route('/', methods=['GET'])
-def test():
-	return jsonify(
-        {'Application' : 'iRepoter'},
-        {'1. Greetings': 'Welcome to the iRepoter API'},
-        {'2. Help': 'For further assistance contact James Mudidi on mudidi.jimmy@gmail.com.',
-        })
+# create_tables.create_tables()
 
-from api.views import incident_view
-from api.views import user_view
+app = Flask(__name__)
+# CORS(app)
+
+app.url_map.strict_slashes = False
+
+from api.views import users, incident, api
+
+app.register_blueprint(api, url_prefix='/api/v1')
