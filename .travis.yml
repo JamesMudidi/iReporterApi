@@ -10,6 +10,7 @@ install:
 script:
   - pytest
   - coveralls 
+  - coverage report
 
 after_success:
   - coveralls
