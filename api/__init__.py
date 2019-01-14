@@ -1,11 +1,14 @@
 from flask import Flask
-# from flask_cors import CORS
-# from app.db import create_tables
-
-# create_tables.create_tables()
 
 app = Flask(__name__)
-# CORS(app)
+
+@app.route('/', methods=['GET'])
+def test():
+	return jsonify(
+        {'Application' : 'iRepoter'},
+        {'1. Greetings': 'Welcome to the iRepoter API'},
+        {'2. Help': 'For further assistance contact James Mudidi on mudidi.jimmy@gmail.com.',
+        })
 
 app.url_map.strict_slashes = False
 
