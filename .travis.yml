@@ -8,10 +8,7 @@ install:
   - pip install coveralls
 
 script:
-  - pytest
-  - coveralls 
-  - coverage
+  - pytest --cov=./
 
 after_success:
   - coveralls
-  - coverage report
