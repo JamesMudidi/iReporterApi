@@ -72,6 +72,13 @@ Prefix `api/v1/` to all api endpoints below
 * Python 3.6
 * Flask (Python microframework)
 
+## Tools
+* Sublime Text
+* VS Code
+* Virtual environment
+* Pylint
+* Pytest
+
 ## Versioning
 This is version 1 of the API
 
