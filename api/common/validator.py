@@ -17,9 +17,3 @@ def email(value):
     if not re.match(r"(^[a-zA-z0-9_.]+@[a-zA-z0-9-]+\.[a-z]+$)", value):
         raise ValidationError('The parameter must be a valid email')
     return value
-
-def password(value):
-    if not value or value.isspace():
-        return 'Password field can not be left empty.'
-    elif len(value) < 8:
-        return 'Password has to be longer than 8 characters.'
