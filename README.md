@@ -64,9 +64,6 @@ Prefix `api/v1/` to all api endpoints below
 | PATCH |  `/redflag/<int:redflagId>/location` | edit redflag location `incidentId` field |
 | PATCH |  `/redflag/<int:redflagId>/comment` | edit redflag comment `incidentId` field |
 | DELETE  |  `/redflag/<int:redflagId>` | delete redflag record with given `redflagId` |
-| POST |  `/incidents` | post an incident |
-| GET |  `/incidents` | get list of all incidents |
-| GET |  `/incidents/<int:incidentId>` | get incident records by `incidentId` field |
 | POST |  `/users` | create a new user |
 | DELETE, GET |  `/users/<int:userId>` | get, delete and update user with given `userId`|
 | GET |  `/users` | get all users |
