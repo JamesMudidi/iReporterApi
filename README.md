@@ -18,9 +18,6 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 7. Users can change the geolocation (Lat Long Coordinates) attached to their ​ red-flag ​ or intervention ​ records​ .
 8. Admin can change the ​ status​​ of a record to either ​ under investigation, rejected ​ (in the event of a false claim)​ ​ or​ resolved ( ​ in the event that the claim has been investigated and resolved)​
 
-## Demo
-
-Project API demo is hosted at [Heroku](https://)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -40,9 +37,9 @@ Open the directory you are going to work from and clone this project using this 
 Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, create a virtual environment, install all the requirements and run the API respectively
 
 ```
-$ git checkout devlop-v1
 $ virtualenv venv
 $ pip install -r requirements.txt
+$ git checkout devlop-v1
 $ python run.py
 ```
 
@@ -54,25 +51,26 @@ The API is hosted on [Heroku](https://ireporterapi.herokuapp.com/)
 * Install Pytest `$ pip install pytest`
 * Navigate to project root
 * Use `pytest` to run the tests
+* To have a more detailed look at the tests use `pytest -v`
 
 ### API endpoints
 
 Prefix `api/v1/` to all api endpoints below
 
-| **METHOD**   | **URL**  | **ACTION** |
+| METHOD   | URL  | ACTION |
 |---|---|---|
-|  **POST** |  `/redflag` | post a red-flag |
-|  **GET** |  `/redflag` | get list of all redflags |
-|  **GET** |  `/redflag/<int:redflagId>` | fetch red-flag records by `redflagId` field |
-|  **PATCH** |  `/redflag/<int:redflagId>/location` | edit redflag location `incidentId` field |
-|  **PATCH** |  `/redflag/<int:redflagId>/comment` | edit redflag comment `incidentId` field |
-| **DELETE**  |  `/redflag/<int:redflagId>` | delete redflag record with given `redflagId` |
-|  **POST** |  `/incidents` | post an incident |
-|  **GET** |  `/incidents` | get list of all incidents |
-|  **GET** |  `/incidents/<int:incidentId>` | fetch incident records by `incidentId` field |
-|  **POST** |  `/users` | create a new user |
-|  **DELETE, GET, PUT** |  `/users/<int:userId>` | get, delete and update user with given `userId`|
-|  **GET** |  `/users` | fetch all users |
+| POST |  `/redflag` | post a red-flag |
+| GET |  `/redflag` | get list of all redflags |
+| GET |  `/redflag/<int:redflagId>` | get red-flag records by `redflagId` field |
+| PATCH |  `/redflag/<int:redflagId>/location` | edit redflag location `incidentId` field |
+| PATCH |  `/redflag/<int:redflagId>/comment` | edit redflag comment `incidentId` field |
+| DELETE  |  `/redflag/<int:redflagId>` | delete redflag record with given `redflagId` |
+| POST |  `/incidents` | post an incident |
+| GET |  `/incidents` | get list of all incidents |
+| GET |  `/incidents/<int:incidentId>` | get incident records by `incidentId` field |
+| POST |  `/users` | create a new user |
+| DELETE, GET |  `/users/<int:userId>` | get, delete and update user with given `userId`|
+| GET |  `/users` | get all users |
 
 ## Built with
 * Python 3.6

@@ -15,7 +15,7 @@ class IncidentSchema(Schema):
     location=fields.Str(required=True, validate=(required))
     id=fields.Int(required=False)
     createdOn=fields.Str(required=False)
-    createdBy=fields.Int(required=False)
+    createdBy=fields.Str(required=False)
     Images=fields.Str(required=False)
     status=fields.Str(required=False)
     Videos=fields.Str(required=False)
@@ -39,7 +39,7 @@ def create_incident():
     if errors:
             return jsonify({
               "errors": errors, 
-              "status": 400}), 400
+              "status": 422}), 422
 
     id=len(incidents_list)+1
     createdOn=datetime.now().strftime('%d-%m-%Y %H:%M')
@@ -49,8 +49,8 @@ def create_incident():
     incidents_list.append(incident)
 
     return jsonify({
-        "Incident": incident,
         "message": "Incident created",
+        "status": 201
         }), 201
 
 @api.route('/incident', methods=['GET'])
@@ -119,24 +119,24 @@ def create_redflag():
         "status": 201,
         }), 201
 
-@api.route('/redflag/<int:redflagId>', methods=['GET'])
-def get_single_redflag(redflagId):
+@api.route('/redflag/<int:id>', methods=['GET'])
+def get_single_redflag(id):
     # function for getting a single redflag
     one_incident=[]
-    incident=redflags_list[redflagId - 1]
+    incident=redflags_list[id - 1]
     one_incident.append(incident.get_incident())
     return jsonify({
         "data": one_incident
         }), 200
 
-@api.route('/redflag/<int:redflagId>/location', methods=['PATCH'])
-def edit_redflag_location(redflagId):
+@api.route('/redflag/<int:id>/location', methods=['PATCH'])
+def edit_redflag_location(id):
     # function for editing redflag location
-    if redflagId==0 or redflagId > len(redflags_list):
+    if id==0 or id > len(redflags_list):
         return jsonify({"message": "Index is out of range"}), 400
     data=request.get_json()
     for incident in redflags_list:
-        if int(incident.id)==int(redflagId):
+        if int(incident.id)==int(id):
             incident.comment=data['location']
             return jsonify({
                 "status": 200,
@@ -148,14 +148,14 @@ def edit_redflag_location(redflagId):
              "status": 404
              }, 404)
 
-@api.route('/redflag/<int:redflagId>/comment', methods=['PATCH'])
-def edit_redflag_comment(redflagId):
+@api.route('/redflag/<int:id>/comment', methods=['PATCH'])
+def edit_redflag_comment(id):
     # function for editing redflag comment
-    if redflagId==0 or redflagId > len(redflags_list):
+    if id==0 or id > len(redflags_list):
         return jsonify({"message": "Index is out of range"}), 400
     data=request.get_json()
     for incident in redflags_list:
-        if int(incident.id)==int(redflagId):
+        if int(incident.id)==int(id):
             incident.comment=data['comment']
             return jsonify({
                 "status": 200,
@@ -167,13 +167,13 @@ def edit_redflag_comment(redflagId):
              "status": 404
              }, 404)
 
-@api.route('/redflag/<int:redflagId>', methods=['DELETE'])
-def delete_redflag(redflagId):
+@api.route('/redflag/<int:id>', methods=['DELETE'])
+def delete_redflag(id):
     # deleting a redflag
-    if redflagId==0 or redflagId > len(redflags_list):
+    if id==0 or id > len(redflags_list):
         return jsonify({"message": "Index out of range"}), 400
     for incident in redflags_list:
-        if incident.id==redflagId:
+        if incident.id==id:
             redflags_list.remove(incident)
     return jsonify({
         "status": 200,
