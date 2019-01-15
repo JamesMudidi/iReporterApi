@@ -5,13 +5,11 @@ python:
 
 install: 
   - pip install -r requirements.txt
+  - pip install pytest pytest-cov
   - pip install coveralls
 
 script:
-  - pytest
-  - coveralls 
-  - coverage
+  - pytest --cov=./
 
 after_success:
   - coveralls
-  - coverage report
