@@ -37,9 +37,8 @@ Open the directory you are going to work from and clone this project using this 
 Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, create a virtual environment, install all the requirements inside the virtual environment and run the API respectively
 
 ```
-$ virtualenv venv
+$ mkvirtualenv venv
 $ pip install -r requirements.txt
-$ git checkout devlop-v1
 $ python run.py
 ```
 
