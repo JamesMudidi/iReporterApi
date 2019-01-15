@@ -107,7 +107,7 @@ def create_redflag():
               "status": 422}), 422
 
     id=len(redflags_list)+1
-    createdOn=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    createdOn=datetime.now().strftime('%Y-%m-%d %H:%M')
     type="redflag"
     redflag=Incident(id, createdOn, data['createdBy'], type, data['location'],
                 data['status'], data['Images'], data['Videos'], data['comment'])
@@ -129,43 +129,33 @@ def get_single_redflag(id):
         "data": one_incident
         }), 200
 
-@api.route('/redflag/<int:id>/location', methods=['PATCH'])
-def edit_redflag_location(id):
+@api.route('/redflag/<int:redflag_id>/location', methods=['PATCH'])
+def edit_redflag_location(redflag_id):
     # function for editing redflag location
-    if id==0 or id > len(redflags_list):
+    if redflag_id==0 or redflag_id > len(redflags_list):
         return jsonify({"message": "Index is out of range"}), 400
     data=request.get_json("location")
     for incident in redflags_list:
-        if int(incident.id)==int(id):
+        if incident.id==redflag_id:
             incident.location=data['location']
             return jsonify({
                 "status": 200,
                 "message": "redflag updated"
                 }), 200
-        else:
-         return jsonify({
-             "error": "the redflag was not found",
-             "status": 404
-             }), 404
 
-@api.route('/redflag/<int:id>/comment', methods=['PATCH'])
-def edit_redflag_comment(id):
+@api.route('/redflag/<int:redflag_id>/comment', methods=['PATCH'])
+def edit_redflag_comment(redflag_id):
     # function for editing redflag comment
-    if id==0 or id > len(redflags_list):
+    if redflag_id==0 or redflag_id > len(redflags_list):
         return jsonify({"message": "Index is out of range"}), 400
     data=request.get_json()
     for incident in redflags_list:
-        if int(incident.id)==int(id):
+        if incident.id==redflag_id:
             incident.comment=data['comment']
             return jsonify({
                 "status": 200,
                 "message": "incident updated"
                 }), 200
-        else:
-         return jsonify({
-             "error": "the redflag was not found",
-             "status": 404
-             }), 404
 
 @api.route('/redflag/<int:id>', methods=['DELETE'])
 def delete_redflag(id):
