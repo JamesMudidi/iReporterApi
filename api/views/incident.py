@@ -32,55 +32,55 @@ class RedflagSchema(Schema):
     status=fields.Str(required=False)
     Videos=fields.Str(required=False)
 
-# @api.route('/incident', methods=['POST'])
-# def create_incident():
-#     # posting an incident
-#     data, errors = IncidentSchema().load(request.get_json())
-#     if errors:
-#             return jsonify({
-#               "errors": errors, 
-#               "status": 422}), 422
+@api.route('/incident', methods=['POST'])
+def create_incident():
+    # posting an incident
+    data, errors = IncidentSchema().load(request.get_json())
+    if errors:
+            return jsonify({
+              "errors": errors, 
+              "status": 422}), 422
 
-#     id=len(incidents_list)+1
-#     createdOn=datetime.now().strftime('%d-%m-%Y %H:%M')
-#     incident=Incident(id, createdOn, data['createdBy'], data['type'], data['location'],
-#                 data['status'], data['Images'], data['Videos'], data['comment'])
+    id=len(incidents_list)+1
+    createdOn=datetime.now().strftime('%d-%m-%Y %H:%M')
+    incident=Incident(id, createdOn, data['createdBy'], data['type'], data['location'],
+                data['status'], data['Images'], data['Videos'], data['comment'])
 
-#     incidents_list.append(incident)
+    incidents_list.append(incident)
 
-#     return jsonify({
-#         "message": "Incident created",
-#         "status": 201
-#         }), 201
+    return jsonify({
+        "message": "Incident created",
+        "status": 201
+        }), 201
 
-# @api.route('/incident', methods=['GET'])
-# def get_incidents():
-#     # getting all incidents
-#     Incidents=[incident.get_incident() for incident in incidents_list]
-#     return jsonify({"data": Incidents})
+@api.route('/incident', methods=['GET'])
+def get_incidents():
+    # getting all incidents
+    Incidents=[incident.get_incident() for incident in incidents_list]
+    return jsonify({"data": Incidents})
 
 
-# @api.route('/incident/<int:incidentId>', methods=['GET'])
-# def get_incident(incidentId):
-#     one_incident=[]
-#     incident=incidents_list[incidentId - 1]
-#     one_incident.append(incident.get_incident())
-#     return jsonify({
-#         "data": one_incident
-#         }), 200
+@api.route('/incident/<int:incidentId>', methods=['GET'])
+def get_incident(incidentId):
+    one_incident=[]
+    incident=incidents_list[incidentId - 1]
+    one_incident.append(incident.get_incident())
+    return jsonify({
+        "data": one_incident
+        }), 200
 
-# @api.route('/incident/<int:incidentId>', methods=['DELETE'])
-# def delete_incident(incidentId):
-#     # deleting an incident
-#     if incidentId==0 or incidentId > len(incidents_list):
-#         return jsonify({"message": "Index out of range"}), 400
-#     for incident in incidents_list:
-#         if incident.id==incidentId:
-#             incidents_list.remove(incident)
-#     return jsonify({
-#         "status": 200,
-#         "message": "incident successfully deleted"
-#         }), 200
+@api.route('/incident/<int:incidentId>', methods=['DELETE'])
+def delete_incident(incidentId):
+    # deleting an incident
+    if incidentId==0 or incidentId > len(incidents_list):
+        return jsonify({"message": "Index out of range"}), 400
+    for incident in incidents_list:
+        if incident.id==incidentId:
+            incidents_list.remove(incident)
+    return jsonify({
+        "status": 200,
+        "message": "incident successfully deleted"
+        }), 200
 
 @api.route('/redflag', methods=['GET'])
 def get_redflags():
