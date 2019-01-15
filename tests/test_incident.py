@@ -76,7 +76,7 @@ class test_incident(unittest.TestCase):
         json=new_details)
         msg = json.loads(response.data)
         self.assertIn("incident successfully deleted", msg['message'])
-        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.status_code, 200)
 
 
     def test_create_redflag(self):
