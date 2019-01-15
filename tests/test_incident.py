@@ -75,7 +75,7 @@ class test_incident(unittest.TestCase):
         response = self.client.delete('/api/v1/incident/1',
         json=new_details)
         msg = json.loads(response.data)
-        self.assertIn("Index out of range", msg['message'])
+        self.assertIn("incident successfully deleted", msg['message'])
         self.assertEqual(response.status_code, 400)
 
 
