@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+from api.views import users, incident, api
 
 @app.route('/', methods=['GET'])
 def test():
@@ -13,7 +14,5 @@ def test():
 
 
 app.url_map.strict_slashes = False
-
-from api.views import users, incident, api
 
 app.register_blueprint(api, url_prefix='/api/v1')
