@@ -7,8 +7,9 @@ from api.views import api
 
 users = []
 
+
 class UserSchema(Schema):
-    #Represents the schema for users
+    # Represents the schema for users
     firstName = fields.Str(required=True, validate=(required))
     lastName = fields.Str(required=True, validate=(required))
     otherNames = fields.Str(required=True, validate=(required))
