@@ -21,6 +21,7 @@ class IncidentSchema(Schema):
     status = fields.Str(required=False)
     Videos = fields.Str(required=False)
 
+
 class RedflagSchema(Schema):
     # Represents the schema for redflags
     type = fields.Str(required=False)
@@ -33,19 +34,22 @@ class RedflagSchema(Schema):
     status = fields.Str(required=False)
     Videos = fields.Str(required=False)
 
+
 @api.route('/incident', methods=['POST'])
 def create_incident():
     # posting an incident
     data, errors = IncidentSchema().load(request.get_json())
     if errors:
             return jsonify({
-              "errors": errors, 
-              "status": 422}), 422
+            "errors": errors, 
+            "status": 422}), 422
 
-    id=len(incidents_list)+1
-    createdOn=datetime.now().strftime('%d-%m-%Y %H:%M')
-    incident=Incident(id, createdOn, data['createdBy'], data['type'], data['location'],
-                data['status'], data['Images'], data['Videos'], data['comment'])
+    id = len(incidents_list)+1
+    createdOn = datetime.now().strftime('%d-%m-%Y %H:%M')
+    incident = Incident(id, createdOn, data['createdBy'],
+                        data['type'], data['location'],
+                        data['status'], data['Images'],
+                        data['Videos'], data['comment'])
 
     incidents_list.append(incident)
 
