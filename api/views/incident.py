@@ -107,7 +107,7 @@ def create_redflag():
               "status": 422}), 422
 
     id=len(redflags_list)+1
-    createdOn=datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    createdOn=datetime.now().strftime('%Y-%m-%d %H:%M')
     type="redflag"
     redflag=Incident(id, createdOn, data['createdBy'], type, data['location'],
                 data['status'], data['Images'], data['Videos'], data['comment'])
@@ -123,11 +123,16 @@ def create_redflag():
 def get_single_redflag(id):
     # function for getting a single redflag
     one_incident=[]
-    incident=redflags_list[id - 1]
-    one_incident.append(incident.get_incident())
-    return jsonify({
-        "data": one_incident
-        }), 200
+    if id==0 or id > len(redflags_list):
+        return jsonify({
+            "message": "Index is out of range"
+            }), 400
+    for incident in redflags_list:
+        if int(incident.id)==int(id):
+            one_incident.append(incident.get_incident())
+            return jsonify({
+                "data": one_incident
+                }), 200
 
 @api.route('/redflag/<int:id>/location', methods=['PATCH'])
 def edit_redflag_location(id):
