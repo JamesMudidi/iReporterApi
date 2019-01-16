@@ -34,8 +34,8 @@ def create_user():
     isAdmin = False
 
     user = User(userId, data['firstName'], data['lastName'],
-        data['otherNames'], data['email'], data['phoneNumber'],
-        data['userName'], registered, isAdmin, data['password'])
+            data['otherNames'], data['email'], data['phoneNumber'],
+            data['userName'], registered, isAdmin, data['password'])
 
     users.append(user)
 
