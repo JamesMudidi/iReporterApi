@@ -18,6 +18,7 @@ class UserSchema(Schema):
     password = fields.Str(required=True, validate=(required))
     phoneNumber = fields.Int(required=True, validate=(required))
 
+    
 @api.route('/users', methods=['POST'])
 def create_user():
     # creating a user
@@ -25,16 +26,16 @@ def create_user():
 
     if errors:
             return jsonify({
-              "errors": errors, 
-              "status": 422}), 422
+                "errors": errors, 
+                "status": 422}), 422
 
-    userId=len(users)+1
-    registered=datetime.now().strftime('%d-%m-%Y %H:%M')
-    isAdmin=False
+    userId = len(users)+1
+    registered = datetime.now().strftime('%d-%m-%Y %H:%M')
+    isAdmin = False
 
-    user=User(userId, data['firstName'], data['lastName'],
-                data['otherNames'], data['email'], data['phoneNumber'],
-                data['userName'], registered, isAdmin, data['password'])
+    user = User(userId, data['firstName'], data['lastName'],
+           data['otherNames'], data['email'], data['phoneNumber'],
+           data['userName'], registered, isAdmin, data['password'])
     
     users.append(user)
 
