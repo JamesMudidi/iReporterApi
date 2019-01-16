@@ -18,16 +18,16 @@ class UserSchema(Schema):
     password = fields.Str(required=True, validate=(required))
     phoneNumber = fields.Int(required=True, validate=(required))
 
-    
+
 @api.route('/users', methods=['POST'])
 def create_user():
     # creating a user
     data, errors = UserSchema().load(request.get_json())
 
     if errors:
-            return jsonify({
-                "errors": errors, 
-                "status": 422}), 422
+        return jsonify({
+            "errors": errors, 
+            "status": 422}), 422
 
     userId = len(users)+1
     registered = datetime.now().strftime('%d-%m-%Y %H:%M')
@@ -45,6 +45,7 @@ def create_user():
         "status": 201
         }), 201
 
+
 @api.route('/users', methods=['GET'])
 def get_users():
     # getting all users
@@ -53,15 +54,17 @@ def get_users():
         "User": user
         }), 200
 
+
 @api.route('/users/<int:userId>', methods=['GET'])
 # getting one user
 def get_one_user(userId):
-    fetched_user=[]
-    user=users[userId - 1]
+    fetched_user = []
+    user = users[userId - 1]
     fetched_user.append(user.get_user_details())
     return jsonify({
         "data": fetched_user
         }), 200
+
 
 @api.route('/users/<int:userId>', methods=['DELETE'])
 def delete_user(userId):
