@@ -8,7 +8,7 @@ def test():
     return jsonify(
         {'Application': 'iRepoter'},
         {'1. Greetings': 'Welcome to the iRepoter API'},
-        {'2. Help': 'For assistance contact James Mudidi on mudidi.jimmy@gmail.com.',}
+        {'2. Help': 'Contact James Mudidi on mudidi.jimmy@gmail.com.'}
     )
 
 
