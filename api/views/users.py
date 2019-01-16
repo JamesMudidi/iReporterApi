@@ -33,9 +33,9 @@ def create_user():
     registered = datetime.now().strftime('%d-%m-%Y %H:%M')
     isAdmin = False
 
-    user = User(userId, data['firstName'], data['lastName'],
-        data['otherNames'], data['email'], data['phoneNumber'],
-        data['userName'], registered, isAdmin, data['password'])
+        user = User(userId, data['firstName'], data['lastName'],
+            data['otherNames'], data['email'], data['phoneNumber'],
+            data['userName'], registered, isAdmin, data['password'])
 
     users.append(user)
 
