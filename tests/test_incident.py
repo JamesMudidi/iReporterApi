@@ -7,9 +7,9 @@ class test_incident(unittest.TestCase):
         self.client = app.test_client()
         self.data={
             "id" : 1,
-            "createdOn" : "Date",  
+            "createdOn" : "12-01-2019 12:42",  
             "createdBy" : "James", 
-            "type" : "red-flags",       
+            "type" : "redflag",       
             "location" : "Kampala",   
             "status" : "draft",     
             "comment" : "it starts here",

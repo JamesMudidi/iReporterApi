@@ -7,13 +7,13 @@ class Test_record_views(unittest.TestCase):
     def setUp(self):
         self.client=app.test_client()
         self.user={
-            "firstname": "test_firstname",
-            "lastname": "test_lastname",
-            "othernames": "test_othernames",
-            "email": "test_email@email.com",
-            "phoneNumber": "test_phonNumber",
-            "username": "test_username",
-            "registered": "registered",
+            "firstname": "James",
+            "lastname": "Mudidi",
+            "othernames": "Jimmy",
+            "email": "james@mail.com",
+            "phoneNumber": "123456789",
+            "username": "jimmy",
+            "registered": "12-01-2019 12:42",
             "password": "1234",
         }
 
@@ -25,13 +25,13 @@ class Test_record_views(unittest.TestCase):
         msg = json.loads(response.data)
         self.assertEqual(422, response.status_code)
 
-    def test_fetch_all_users(self):
+    def test_get_all_users(self):
         # Tests that the end point fetches all users
         response = self.client.get('/api/v1/users',
                                    content_type='application/json')
         self.assertEqual(200, response.status_code)
 
-    def test_fetch_single_user_details(self):
+    def test_get_single_user_details(self):
         # Tests that the end point returns a single user's details
 
         self.client.post('api/v1/users',

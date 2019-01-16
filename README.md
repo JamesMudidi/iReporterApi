@@ -37,7 +37,7 @@ Open the directory you are going to work from and clone this project using this 
 Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, create a virtual environment, install all the requirements, and run the API respectively
 
 ```
-$ virtualenv venv
+$ mkvirtualenv venv
 $ pip install -r requirements.txt
 $ python run.py
 ```
@@ -64,9 +64,6 @@ Prefix `api/v1/` to all api endpoints below
 | PATCH |  `/redflag/<int:redflagId>/location` | edit redflag location `incidentId` field |
 | PATCH |  `/redflag/<int:redflagId>/comment` | edit redflag comment `incidentId` field |
 | DELETE  |  `/redflag/<int:redflagId>` | delete redflag record with given `redflagId` |
-| POST |  `/incidents` | post an incident |
-| GET |  `/incidents` | get list of all incidents |
-| GET |  `/incidents/<int:incidentId>` | get incident records by `incidentId` field |
 | POST |  `/users` | create a new user |
 | DELETE, GET |  `/users/<int:userId>` | get, delete and update user with given `userId`|
 | GET |  `/users` | get all users |
@@ -74,6 +71,13 @@ Prefix `api/v1/` to all api endpoints below
 ## Built with
 * Python 3.6
 * Flask (Python microframework)
+
+## Tools
+* Sublime Text
+* VS Code
+* Virtual environment
+* Pylint
+* Pytest
 
 ## Versioning
 This is version 1 of the API
