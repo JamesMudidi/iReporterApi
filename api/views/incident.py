@@ -11,8 +11,8 @@ redflags_list = []
 
 class IncidentSchema(Schema):
     # Represents the schema for incidents
-    type = fields.Str(required = True, validate = (required))
-    comment = fields.Str(required = True, validate = (required))
+    type = fields.Str(required=True, validate=(required))
+    comment = fields.Str(required=True, validate=(required))
     location=fields.Str(required=True, validate=(required))
     id=fields.Int(required=False)
     createdOn=fields.Str(required=False)
