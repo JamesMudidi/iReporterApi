@@ -95,12 +95,12 @@ def get_redflags():
     # getting all redflags
     Redflags = [incident.get_incident() for incident in redflags_list]
     if len(redflags_list) > 0:
-     return jsonify({
+    return jsonify({
          "data": Redflags,
-         "status" : 200
+         "status": 200
         }), 200
     else:
-     return jsonify({
+    return jsonify({
              "error": "no redflags found",
              "status": 404
              }), 404
@@ -109,16 +109,16 @@ def get_redflags():
 @api.route('/redflag', methods=['POST'])
 def create_redflag():
     # function for creating a redflag
-    data, errors = RedflagSchema().load(request.get_json())    
+    data, errors = RedflagSchema().load(request.get_json())
     if errors:
             return jsonify({
-              "errors": errors, 
+              "errors": errors,
               "status": 422}), 422
 
     id=len(redflags_list)+1
-    createdOn=datetime.now().strftime('%Y-%m-%d %H:%M')
-    type="redflag"
-    redflag=Incident(id, createdOn, data['createdBy'], type, data['location'],
+    createdOn = datetime.now().strftime('%Y-%m-%d %H:%M')
+    type = "redflag"
+    redflag = Incident(id, createdOn, data['createdBy'], type, data['location'],
                 data['status'], data['Images'], data['Videos'], data['comment'])
 
     redflags_list.append(redflag)
