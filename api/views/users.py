@@ -26,7 +26,7 @@ def create_user():
 
     if errors:
         return jsonify({
-            "errors": errors, 
+            "errors": errors,
             "status": 422}), 422
 
     userId = len(users)+1
@@ -49,7 +49,7 @@ def create_user():
 @api.route('/users', methods=['GET'])
 def get_users():
     # getting all users
-    user=[user.get_user_details() for user in users]
+    user = [user.get_user_details() for user in users]
     return jsonify({
         "User": user
         }), 200
