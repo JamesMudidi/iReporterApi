@@ -95,12 +95,12 @@ def get_redflags():
     # getting all redflags
     Redflags = [incident.get_incident() for incident in redflags_list]
     if len(redflags_list) > 0:
-    return jsonify({
+        return jsonify({
          "data": Redflags,
          "status": 200
         }), 200
     else:
-    return jsonify({
+        return jsonify({
              "error": "no redflags found",
              "status": 404
              }), 404
@@ -115,11 +115,12 @@ def create_redflag():
               "errors": errors,
               "status": 422}), 422
 
-    id=len(redflags_list)+1
+    id = len(redflags_list)+1
     createdOn = datetime.now().strftime('%Y-%m-%d %H:%M')
     type = "redflag"
-    redflag = Incident(id, createdOn, data['createdBy'], type, data['location'],
-                data['status'], data['Images'], data['Videos'], data['comment'])
+    redflag = Incident(id, createdOn, data['createdBy'],
+                       type, data['location'], data['status'],
+                       data['Images'], data['Videos'], data['comment'])
 
     redflags_list.append(redflag)
 
@@ -153,7 +154,7 @@ def edit_redflag_location(redflag_id):
     data = request.get_json("location")
     for incident in redflags_list:
         if incident.id == redflag_id:
-            incident.location=data['location']
+            incident.location = data['location']
             return jsonify({
                 "status": 200,
                 "message": "redflag updated"
@@ -168,7 +169,7 @@ def edit_redflag_comment(redflag_id):
     data = request.get_json()
     for incident in redflags_list:
         if incident.id == redflag_id:
-            incident.comment=data['comment']
+            incident.comment = data['comment']
             return jsonify({
                 "status": 200,
                 "message": "incident updated"
