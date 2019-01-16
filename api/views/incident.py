@@ -41,8 +41,8 @@ def create_incident():
     data, errors = IncidentSchema().load(request.get_json())
     if errors:
             return jsonify({
-            "errors": errors, 
-            "status": 422}), 422
+                "errors": errors,
+                "status": 422}), 422
 
     id = len(incidents_list)+1
     createdOn = datetime.now().strftime('%d-%m-%Y %H:%M')
@@ -58,39 +58,42 @@ def create_incident():
         "status": 201
         }), 201
 
+
 @api.route('/incident', methods=['GET'])
 def get_incidents():
     # getting all incidents
-    Incidents=[incident.get_incident() for incident in incidents_list]
+    Incidents = [incident.get_incident() for incident in incidents_list]
     return jsonify({"data": Incidents})
 
 
 @api.route('/incident/<int:id>', methods=['GET'])
 def get_incident(id):
-    one_incident=[]
-    incident=incidents_list[id - 1]
+    one_incident = []
+    incident = incidents_list[id - 1]
     one_incident.append(incident.get_incident())
     return jsonify({
         "data": one_incident
         }), 200
 
+
 @api.route('/incident/<int:id>', methods=['DELETE'])
 def delete_incident(id):
     # deleting an incident
-    if id==0 or id > len(incidents_list):
+    if id == 0 or id > len(incidents_list):
         return jsonify({"message": "Index out of range"}), 400
     for incident in incidents_list:
-        if incident.id==id:
+        if incident.id == id:
             incidents_list.remove(incident)
     return jsonify({
         "status": 200,
         "message": "incident successfully deleted"
         }), 200
 
+
 @api.route('/redflag', methods=['GET'])
 def get_redflags():
     # getting all redflags
-    Redflags=[incident.get_incident() for incident in redflags_list]
+    Redflags = [incident.get_incident() for incident in redflags_list]
     if len(redflags_list) > 0:
      return jsonify({
          "data": Redflags,
@@ -102,10 +105,11 @@ def get_redflags():
              "status": 404
              }), 404
 
+
 @api.route('/redflag', methods=['POST'])
 def create_redflag():
     # function for creating a redflag
-    data, errors=RedflagSchema().load(request.get_json())    
+    data, errors = RedflagSchema().load(request.get_json())    
     if errors:
             return jsonify({
               "errors": errors, 
