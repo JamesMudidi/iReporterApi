@@ -4,6 +4,7 @@ app = Flask(__name__)
 
 from api.views import users, incident, api
 
+
 @app.route('/', methods=['GET'])
 def test():
     return jsonify(
