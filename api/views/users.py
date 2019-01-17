@@ -70,3 +70,4 @@ def delete_user(userId):
         if userId == userId:
             users.remove(user)
     return jsonify({"message": "account successfully deleted"}), 200
+    
