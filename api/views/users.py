@@ -53,6 +53,7 @@ def get_users():
         "User": user
         }), 200
 
+
 @api.route('/users/<int:userId>', methods=['GET'])
 # getting one user
 def get_one_user(userId):

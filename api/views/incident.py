@@ -186,7 +186,9 @@ def edit_redflag_comment(redflag_id):
 # def edit_redflag_status(redflag_id):
 #     # function for editing redflag comment
 #     if redflag_id == 0 or redflag_id > len(redflags_list):
-#         return jsonify({"message": "The ID provided is not in the system"}), 400
+#         return jsonify({
+#             "message": "The ID provided is not in the system"
+#             }), 400
 #     data = request.get_json()
 #     for incident in redflags_list:
 #         if incident.id == redflag_id:
