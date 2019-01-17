@@ -3,11 +3,11 @@ from marshmallow import ValidationError
 
 
 def required(value):
-    """Validate that field under validation does not contain null value."""
+    """Validate that field under validation does not contain empty values."""
 
     if isinstance(value, str):
         if not value.strip(' '):
-            raise ValidationError('The parameter cannot be null')
+            raise ValidationError('The parameter cannot be empty')
         return value
     elif value:
         return value

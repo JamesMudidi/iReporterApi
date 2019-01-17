@@ -19,7 +19,6 @@ class Test_record_views(unittest.TestCase):
 
     def test_register_user(self):
         # Tests that the end point enables a new user create an account
-        
         response = self.client.post('api/v1/users',
         json=self.user)
         msg = json.loads(response.data)
@@ -31,9 +30,8 @@ class Test_record_views(unittest.TestCase):
                                    content_type='application/json')
         self.assertEqual(200, response.status_code)
 
-    def test_get_single_user_details(self):
+    def test_get_user_details(self):
         # Tests that the end point returns a single user's details
-
         self.client.post('api/v1/users',
         json=self.user)
         response=self.client.get('/api/v1/users/',
@@ -51,5 +49,5 @@ class Test_record_views(unittest.TestCase):
         response = self.client.delete('api/v1/users/1',
         json=new_details)
         msg = json.loads(response.data)
-        self.assertIn("Index out of range", msg['message'])
+        self.assertIn("The ID provided is not in the system", msg['message'])
         self.assertEqual(400, response.status_code)

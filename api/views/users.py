@@ -58,11 +58,11 @@ def get_users():
 @api.route('/users/<int:userId>', methods=['GET'])
 # getting one user
 def get_one_user(userId):
-    fetched_user = []
+    one_user = []
     user = users[userId - 1]
-    fetched_user.append(user.get_user_details())
+    one_user.append(user.get_user_details())
     return jsonify({
-        "data": fetched_user
+        "data": one_user
         }), 200
 
 
@@ -70,7 +70,7 @@ def get_one_user(userId):
 def delete_user(userId):
     # deleting a user
     if userId == 0 or userId > len(users):
-        return jsonify({"message": "Index out of range"}), 400
+        return jsonify({"message": "The ID provided is not in the system"}), 400
     for user in users:
         if userId == userId:
             users.remove(user)
