@@ -34,7 +34,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Open the directory you are going to work from and clone this project using this [link](https://github.com/JamesMudidi/iReporterApi.git)
 
-Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, create a virtual environment, install all the requirements inside the virtual environment and run the API respectively
+Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, install python 3.6, create a virtual environment, install all the requirements, and run the API respectively
 
 ```
 $ mkvirtualenv venv

@@ -2,16 +2,16 @@ class User:
     # user class
     def __init__(self, userId, firstName, lastName, otherNames, email,
                  phoneNumber, userName, registered, isAdmin, password):
-        self.userId=userId
-        self.firstName=firstName
-        self.lastName=lastName
-        self.otherNames=otherNames
-        self.email=email
-        self.phoneNumber=phoneNumber
-        self.userName=userName
-        self.registered=registered
-        self.isAdmin=isAdmin
-        self.password=password
+        self.userId = userId
+        self.firstName = firstName
+        self.lastName = lastName
+        self.otherNames = otherNames
+        self.email = email
+        self.phoneNumber = phoneNumber
+        self.userName = userName
+        self.registered = registered
+        self.isAdmin = isAdmin
+        self.password = password
 
     def get_user_details(self):
         # getting one user
