@@ -68,9 +68,10 @@ def get_one_user(userId):
 def delete_user(userId):
     # deleting a user
     if userId == 0 or userId > len(users):
-        return jsonify({"message": "The ID provided is not in the system"}), 400
+        return jsonify({
+            "message": "The ID provided is not in the system"
+            }), 400
     for user in users:
         if userId == userId:
             users.remove(user)
     return jsonify({"message": "account successfully deleted"}), 200
-    

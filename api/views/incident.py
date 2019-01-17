@@ -80,7 +80,9 @@ def get_incident(id):
 def delete_incident(id):
     # deleting an incident
     if id == 0 or id > len(incidents_list):
-        return jsonify({"message": "The ID provided is not in the system"}), 400
+        return jsonify({
+            "message": "The ID provided is not in the system"
+            }), 400
     for incident in incidents_list:
         if incident.id == id:
             incidents_list.remove(incident)
@@ -150,7 +152,9 @@ def get_single_redflag(id):
 def edit_redflag_location(redflag_id):
     # function for editing redflag location
     if redflag_id == 0 or redflag_id > len(redflags_list):
-        return jsonify({"message": "The ID provided is not in the system"}), 400
+        return jsonify({
+            "message": "The ID provided is not in the system"
+            }), 400
     data = request.get_json("location")
     for incident in redflags_list:
         if incident.id == redflag_id:
@@ -165,7 +169,9 @@ def edit_redflag_location(redflag_id):
 def edit_redflag_comment(redflag_id):
     # function for editing redflag comment
     if redflag_id == 0 or redflag_id > len(redflags_list):
-        return jsonify({"message": "The ID provided is not in the system"}), 400
+        return jsonify({
+            "message": "The ID provided is not in the system"
+            }), 400
     data = request.get_json()
     for incident in redflags_list:
         if incident.id == redflag_id:
@@ -195,7 +201,9 @@ def edit_redflag_comment(redflag_id):
 def delete_redflag(id):
     # deleting a redflag
     if id == 0 or id > len(redflags_list):
-        return jsonify({"message": "The ID provided is not in the system"}), 400
+        return jsonify({
+            "message": "The ID provided is not in the system"
+            }), 400
     for incident in redflags_list:
         if incident.id == id:
             redflags_list.remove(incident)
