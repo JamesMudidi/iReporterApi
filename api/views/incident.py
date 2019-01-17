@@ -16,9 +16,9 @@ class IncidentSchema(Schema):
     location = fields.Str(required=True, validate=(required))
     id = fields.Int(required=False)
     createdOn = fields.Str(required=False)
-    createdBy = fields.Str(required=False)
+    createdBy = fields.Str(required=True)
     Images = fields.Str(required=False)
-    status = fields.Str(required=False)
+    status = fields.Str(required=True)
     Videos = fields.Str(required=False)
 
 
@@ -29,9 +29,9 @@ class RedflagSchema(Schema):
     location = fields.Str(required=True, validate=(required))
     id = fields.Int(required=False)
     createdOn = fields.Str(required=False)
-    createdBy = fields.Str(required=False)
+    createdBy = fields.Str(required=True)
     Images = fields.Str(required=False)
-    status = fields.Str(required=False)
+    status = fields.Str(required=True)
     Videos = fields.Str(required=False)
 
 
@@ -157,7 +157,7 @@ def edit_redflag_location(redflag_id):
             incident.location = data['location']
             return jsonify({
                 "status": 200,
-                "message": "redflag updated"
+                "message": "redflag location updated"
                 }), 200
 
 
@@ -172,8 +172,23 @@ def edit_redflag_comment(redflag_id):
             incident.comment = data['comment']
             return jsonify({
                 "status": 200,
-                "message": "incident updated"
+                "message": "redflag comment updated"
                 }), 200
+
+
+# @api.route('/redflag/<int:redflag_id>/status', methods=['PATCH'])
+# def edit_redflag_status(redflag_id):
+#     # function for editing redflag comment
+#     if redflag_id == 0 or redflag_id > len(redflags_list):
+#         return jsonify({"message": "The ID provided is not in the system"}), 400
+#     data = request.get_json()
+#     for incident in redflags_list:
+#         if incident.id == redflag_id:
+#             incident.status = data['status']
+#             return jsonify({
+#                 "status": 200,
+#                 "message": "redflag status updated"
+#                 }), 200
 
 
 @api.route('/redflag/<int:id>', methods=['DELETE'])

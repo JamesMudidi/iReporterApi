@@ -40,7 +40,6 @@ def create_user():
     users.append(user)
 
     return jsonify({
-        "User": user,
         "Message": "User created",
         "status": 201
         }), 201
@@ -53,7 +52,6 @@ def get_users():
     return jsonify({
         "User": user
         }), 200
-
 
 @api.route('/users/<int:userId>', methods=['GET'])
 # getting one user
