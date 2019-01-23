@@ -113,13 +113,13 @@ def get_all(identity):
 def get_incidents(type, identity):
     incidents = ()
 
-    if isAdmin(identity):
-        conn.cur.execute("select * from incidents where type = '{}'".format(type))
-        incidents = conn.cur.fetchall()
-    else:
-        conn.cur.execute(
-            "select * from incidents where type = '{}' and createdBy = '{}'".format(type, identity))
-        incidents = conn.cur.fetchall()
+    # if isAdmin(identity):
+    #     conn.cur.execute("select * from incidents where type = '{}'".format(type))
+    #     incidents = conn.cur.fetchall()
+    # else:
+    conn.cur.execute(
+        "select * from incidents where type = '{}'".format(type))
+    incidents = conn.cur.fetchall()
 
     if not incidents:
         return jsonify({
@@ -413,10 +413,10 @@ def delete_incident(incident_id, type):
     }), 200
 
 
-def isAdmin(user_id):
-    conn.cur.execute("select * from users where id = '{}'".format(user_id))
-    user = conn.cur.fetchone()
-    return user['isAdmin']
+# def isAdmin(user_id):
+#     conn.cur.execute("SELECT * from users WHERE id='{}'".format(user_id))
+#     user = conn.cur.fetchone()
+#     return user['isAdmin']
 
 
 def verified(user_id):

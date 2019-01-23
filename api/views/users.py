@@ -12,7 +12,7 @@ conn = DatabaseConnection()
 
 class SignUpSchema(Schema):
     # Represents the schema for users
-    firstname = fields.Str(required=True, validate=(required))
+    firstname = fields.Str(required=True, length=2, validate=(required))
     lastname = fields.Str(required=True, validate=(required))
     username = fields.Str(required=True, validate=(required))
     email = fields.Email(required=True, validate=(email))
