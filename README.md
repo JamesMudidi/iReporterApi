@@ -32,22 +32,24 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Installing
 
-Open the directory you are going to work from and clone this project using this [link](https://github.com/JamesMudidi/iReporterDB.git)
 
-Open your terminal or console and navigate to your working directory then enter the following commands to create a virtual environment, install all the requirements, create a database, activate the database path and run the API respectively
+Open the directory you are going to work from and clone this project using this [link](https://github.com/JamesMudidi/iReporterDB.git)
+Open your terminal or console and navigate to your working directory then enter the following commands to select the branch to work with, install python 3.6, create a virtual environment, install all the requirements, and run the API respectively
 
 ```
 $ mkvirtualenv venv
 $ pip install -r requirements.txt
 $ python run.py
 $ sudo -u postgres psql
-$ source .env
+$ source .testing
 $ CREATE DATABASE ireporter;
+
 ```
 
 ## Deployment
 
-The API is hosted on [Heroku](https://ireporterapi_v2.herokuapp.com/)
+The API is hosted on [Heroku](https://ireporterapi_v3.herokuapp.com/)
+
 
 ## Running Tests
 * Install Pytest `$ pip install pytest`
@@ -83,6 +85,7 @@ Prefix `api/v2/` to all api endpoints below
 | DELETE |  `/intervention/<int:interventionId>` | delete intervention record by `interventionId` |
 | DELETE |  `/users/<int:userId>` | delete one user by `userId` |
 
+
 ## Built with
 * Python 3.6
 * Flask (Python microframework)
@@ -95,6 +98,7 @@ Prefix `api/v2/` to all api endpoints below
 * Pylint
 * Pytest
 * PostgreSQL
+
 
 ## Versioning
 This is version 1 of the API
