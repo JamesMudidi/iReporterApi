@@ -1,0 +1,19 @@
+env:
+  - DATABASE_URL="dbname=ireporter host=localhost user=postgres password=postgres"
+language: python
+python:
+  - "3.6"
+install: 
+  - pip install -r requirements.txt
+  - pip install coveralls
+
+before_script:
+ - psql -c "CREATE DATABASE ireporter;" -U postgres
+
+# command to run tests
+script:
+  - nosetests --with-coverage --cover-package=app
+  - coveralls
+
+after_success:
+  - coveralls
