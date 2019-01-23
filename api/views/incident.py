@@ -12,8 +12,8 @@ from api.common.authenticator import authenticate
 from db.config import DatabaseConnection
 from api.views.errors import error_response
 
-email = "e.kmisoi@gmail.com"
-password = "fallout1211"
+email = "mudidi.jimmy@gmail.com"
+password = "postgres"
 conn = DatabaseConnection()
 
 class IncidentSchema(Schema):

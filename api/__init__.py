@@ -1,7 +1,4 @@
 from flask import Flask
-from flask_cors import CORS
-
-from db import create_tables
 from flask import jsonify
 
 
