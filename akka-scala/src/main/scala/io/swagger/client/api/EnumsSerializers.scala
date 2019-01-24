@@ -19,7 +19,7 @@ object EnumsSerializers {
 
   def all: Seq[Serializer[_]] = Seq[Serializer[_]]() :+
     new EnumNameSerializer(OrderEnums.Status) :+
-    new EnumNameSerializer(PetEnums.Status)
+    new EnumNameSerializer(RedflagEnums.Status)
 
   private class EnumNameSerializer[E <: Enumeration: ClassTag](enum: E)
     extends Serializer[E#Value] {

@@ -15,23 +15,23 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class Order (
+case class Redflag (
   id: Option[Long] = None,
-  redflagId: Option[Long] = None,
-  quantity: Option[Int] = None,
-  shipDate: Option[DateTime] = None,
-  /* Order Status */
-  status: Option[OrderEnums.Status] = None,
-  complete: Option[Boolean] = None
+  category: Option[Category] = None,
+  name: String,
+  photoUrls: Seq[String],
+  tags: Option[Seq[Tag]] = None,
+  /* Redflag status */
+  status: Option[RedflagEnums.Status] = None
 ) extends ApiModel
 
-object OrderEnums {
+object RedflagEnums {
 
   type Status = Status.Value
   object Status extends Enumeration {
-    val Placed = Value("placed")
-    val Approved = Value("approved")
-    val Delivered = Value("delivered")
+    val Available = Value("available")
+    val Pending = Value("pending")
+    val Sold = Value("sold")
   }
 
 }

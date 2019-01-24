@@ -19,18 +19,6 @@ import io.swagger.client.core.ApiKeyLocations._
 object UserApi {
 
   /**
-   * This can only be done by the logged in user.
-   * 
-   * Expected answers:
-   *   code 0 :  (successful operation)
-   * 
-   * @param body Created user object
-   */
-  def createUser(body: User): ApiRequest[Unit] =
-    ApiRequest[Unit](ApiMethods.POST, "https://virtserver.swaggerhub.com/JamesMudidi/iRepoter/1.0.0", "/user", "application/json")
-      .withBody(body)
-      .withDefaultSuccessResponse[Unit]
-        /**
    * 
    * 
    * Expected answers:

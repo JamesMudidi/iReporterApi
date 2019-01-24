@@ -65,19 +65,22 @@ All URIs are relative to *https://virtserver.swaggerhub.com/JamesMudidi/iRepoter
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*IRepoterApi* | **addPet** | **POST** /pet | Add a new pet to the store
-*PetApi* | **deletePet** | **DELETE** /pet/{petId} | Deletes a pet
-*PetApi* | **findPetsByStatus** | **GET** /pet/findByStatus | Finds Pets by status
-*PetApi* | **findPetsByTags** | **GET** /pet/findByTags | Finds Pets by tags
-*PetApi* | **getPetById** | **GET** /pet/{petId} | Find pet by ID
-*PetApi* | **updatePet** | **PUT** /pet | Update an existing pet
-*PetApi* | **updatePetWithForm** | **POST** /pet/{petId} | Updates a pet in the store with form data
-*PetApi* | **uploadFile** | **POST** /pet/{petId}/uploadImage | uploads an image
-*StoreApi* | **deleteOrder** | **DELETE** /store/order/{orderId} | Delete purchase order by ID
-*StoreApi* | **getInventory** | **GET** /store/inventory | Returns pet inventories by status
-*StoreApi* | **getOrderById** | **GET** /store/order/{orderId} | Find purchase order by ID
-*StoreApi* | **placeOrder** | **POST** /store/order | Place an order for a pet
-*UserApi* | **createUser** | **POST** /user | Create user
+*AuthenticationApi* | **createUser** | **POST** /auth/signup | Create user
+*AuthenticationApi* | **createUser_0** | **POST** /auth/login | Login user
+*InterventionApi* | **createintervention** | **POST** /intervention | create a new intervention incidence
+*InterventionApi* | **deleteintervention** | **DELETE** /intervention/{intervention_id}/ | Deletes a intervention
+*InterventionApi* | **findinterventionByStatus** | **GET** /intervention/ | Get all interventions
+*InterventionApi* | **getinterventionById** | **GET** /intervention/{intervention_id} | Find intervention by ID
+*InterventionApi* | **updateinterventionWithForm** | **PATCH** /intervention/{intervention_id}/location | update the location of a given intervention
+*InterventionApi* | **updateinterventionWithForm_0** | **PATCH** /intervention/{intervention_id}/comment | update the comment of a given intervention
+*InterventionApi* | **updateinterventionWithForm_1** | **PATCH** /intervention/{intervention_id}/status | update the status of a given intervention
+*RedflagApi* | **createRedflag** | **POST** /redflag | create a new redflag incidence
+*RedflagApi* | **deleteRedflag** | **DELETE** /redflag/{redflag_id}/ | Deletes a Redflag
+*RedflagApi* | **findRedflagByStatus** | **GET** /redflag/ | Get all redflags
+*RedflagApi* | **getRedflagById** | **GET** /redflag/{redflag_id} | Find Redflag by ID
+*RedflagApi* | **updateRedflagWithForm** | **PATCH** /redflag/{redflag_id}/location | update the location of a given redflag
+*RedflagApi* | **updateRedflagWithForm_0** | **PATCH** /redflag/{redflag_id}/comment | update the comment of a given redflag
+*RedflagApi* | **updateRedflagWithForm_1** | **PATCH** /redflag/{redflag_id}/status | update the status of a given redflag
 *UserApi* | **createUsersWithArrayInput** | **POST** /user/createWithArray | Creates list of users with given input array
 *UserApi* | **createUsersWithListInput** | **POST** /user/createWithList | Creates list of users with given input array
 *UserApi* | **deleteUser** | **DELETE** /user/{username} | Delete user
@@ -92,7 +95,7 @@ Class | Method | HTTP request | Description
  - [ApiResponse](ApiResponse.md)
  - [Category](Category.md)
  - [Order](Order.md)
- - [Pet](Pet.md)
+ - [Redflag](Redflag.md)
  - [Tag](Tag.md)
  - [User](User.md)
 
