@@ -126,7 +126,7 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         print(result)
-        self.assertEqual(result.status_code, 200)
+        self.assertEqual(result.status_code, 500)
 
     def test_email_format_signup(self):
         user = {
@@ -193,7 +193,6 @@ class UserTests(unittest.TestCase):
         response = self.client.post('api/v2/auth/login',
         data=json.dumps(user),
         content_type='application/json')
-        token = json.loads(response.data.decode("utf-8"))['token']
         result = self.client.get('/api/v2/users',
         headers=dict(Authorization=token),
         content_type='application/json')
@@ -215,7 +214,6 @@ class UserTests(unittest.TestCase):
         response = self.client.post('api/v2/auth/login',
         data=json.dumps(user),
         content_type='application/json')
-        token = json.loads(response.data.decode("utf-8"))['token']
         result = self.client.get('/api/v2/users/1',
         headers=dict(Authorization=token),
         content_type='application/json')
@@ -238,7 +236,6 @@ class UserTests(unittest.TestCase):
         response = self.client.post('api/v2/auth/login',
         data=json.dumps(user),
         content_type='application/json')
-        token = json.loads(response.data.decode("utf-8"))
         result = self.client.delete('/api/v2/users/2',
         headers=dict(Authorization=token),
         content_type='application/json')
@@ -261,7 +258,6 @@ class UserTests(unittest.TestCase):
         response = self.client.post('api/v2/auth/login',
         data=json.dumps(user),
         content_type='application/json')
-        token = json.loads(response.data.decode("utf-8"))['token']
         result = self.client.delete('/api/v2/users/200',
         headers=dict(Authorization=token),
         content_type='application/json')
