@@ -13,7 +13,7 @@ before_script:
 
 # command to run tests
 script:
-  - pytest --cov
+  - pytest --cov=./
   - coveralls
 
 after_success:
