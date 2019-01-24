@@ -126,7 +126,7 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         print(result)
-        self.assertEqual(result.status_code, 500)
+        self.assertEqual(result.status_code, 200)
 
     def test_email_format_signup(self):
         user = {
@@ -194,9 +194,8 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         result = self.client.get('/api/v2/users',
-        headers=dict(Authorization=token),
         content_type='application/json')
-        self.assertEqual(result.status_code, 500)
+        self.assertEqual(result.status_code, 401)
 
     def test_get_single_user(self):
         user = {
@@ -215,9 +214,8 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         result = self.client.get('/api/v2/users/1',
-        headers=dict(Authorization=token),
         content_type='application/json')
-        self.assertEqual(result.status_code, 500)
+        self.assertEqual(result.status_code, 401)
 
     def test_delete_user(self):
         user = {
@@ -237,7 +235,6 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         result = self.client.delete('/api/v2/users/2',
-        headers=dict(Authorization=token),
         content_type='application/json')
         self.assertEqual(result.status_code, 401)
 
@@ -259,6 +256,5 @@ class UserTests(unittest.TestCase):
         data=json.dumps(user),
         content_type='application/json')
         result = self.client.delete('/api/v2/users/200',
-        headers=dict(Authorization=token),
         content_type='application/json')
-        self.assertEqual(result.status_code, 500)
+        self.assertEqual(result.status_code, 401)
