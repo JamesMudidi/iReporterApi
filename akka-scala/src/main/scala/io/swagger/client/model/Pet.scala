@@ -15,9 +15,24 @@ import io.swagger.client.core.ApiModel
 import org.joda.time.DateTime
 import java.util.UUID
 
-case class Tag (
+case class Pet (
   id: Option[Long] = None,
-  name: Option[String] = None
+  category: Option[Category] = None,
+  name: String,
+  photoUrls: Seq[String],
+  tags: Option[Seq[Tag]] = None,
+  /* pet status in the store */
+  status: Option[PetEnums.Status] = None
 ) extends ApiModel
 
+object PetEnums {
+
+  type Status = Status.Value
+  object Status extends Enumeration {
+    val Available = Value("available")
+    val Pending = Value("pending")
+    val Sold = Value("sold")
+  }
+
+}
 
