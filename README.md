@@ -19,6 +19,9 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 
 
 ## Getting Started
+[API Documentation](https://app.swaggerhub.com/apis-docs/JamesMudidi/iRepoter/2.0)
+
+
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
@@ -46,7 +49,7 @@ $ CREATE DATABASE ireporter;
 
 ## Deployment
 
-The API is hosted on [Heroku](https://ireporterapi_v2.herokuapp.com/)
+The API is hosted on [Heroku](https://irepoter-v3.herokuapp.com/)
 
 ## Running Tests
 * Install Pytest `$ pip install pytest`
