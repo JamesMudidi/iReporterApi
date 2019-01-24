@@ -8,9 +8,9 @@ conn = DatabaseConnection()
 
 class Incident:
     # incident class
-    def __init__(self, createdBy, type, title, location,
+    def __init__(self, username, type, title, location,
                  status, Images, Videos, comment):
-        self.createdBy = createdBy
+        self.createdBy = username
         self.type = type
         self.title = title
         self.location = location
@@ -21,8 +21,8 @@ class Incident:
 
     def create_incident(self):
         # creating an incident
-        cur.execute(
-            "INSERT INTO incidents(createdBy, type, title, location, status, Images, Videos, comment) values('{}','{}','{}','{}','{}','{}','{}', '{}')".format(
+        conn.cur.execute(
+            "INSERT INTO incidents(createdBy, type, title, location, status, Images, Videos, comment) values('{}','{}','{}','{}','{}','{}','{}','{}')".format(
                 self.createdBy,
                 self.type,
                 self.title,
@@ -31,9 +31,8 @@ class Incident:
                 self.Images,
                 self.Videos,
                 self.comment))
-        conn.commit()
-        cur.execute("select * from incidents")
-        incident = cur.fetchall()[-1]
+        conn.cur.execute("select * from incidents")
+        incident = conn.cur.fetchall()[-1]
 
         print(incident)
         incident_type = ''

@@ -24,7 +24,7 @@ class IncidentSchema(Schema):
     location = fields.Str(required=True, validate=(required))
     id = fields.Int(required=False)
     createdOn = fields.Str(required=False)
-    createdBy = fields.Int(required=False)
+    createdBy = fields.Str(required=False)
     Images = fields.Str(required=False)
     status = fields.Str(required=False)
     Videos = fields.Str(required=False)
@@ -47,44 +47,40 @@ class IncidentStatusSchema(Schema):
 @api.route('/redflags', methods=['POST'])
 @authenticate
 def create_redflag(identity):
-    # creating a red-flag
-    if not isAdmin(identity):
-        data, errors = IncidentSchema().load(request.get_json())
-
+    if isAdmin(identity):
+        return error_response(
+            403, "Administrator cannot create an incident record")
+    else:
+        data=request.get_json('data')
+        data, errors = IncidentSchema().load(data)
         if errors:
             return jsonify({
                 "errors": errors,
                 "status": 400}), 400
-
-        return create_incident(identity, data, 'red-flag')
-    return error_response(
-        403, "Administrator cannot create an incident record")
+        return create_incident(identity, data, 'redflag')
 
 
 @api.route('/interventions', methods=['POST'])
 @authenticate
-def create_intervension(identity):
-    # creating a red-flag
-    if not isAdmin(identity):
-        data, errors = IncidentSchema().load(request.get_json())
-
+def create_intervention(identity):
+    if isAdmin(identity):
+            return error_response(
+        403, "Administrator cannot create an incident record")
+    else:
+        data=request.get_json('data')
+        data, errors = IncidentSchema().load(data)
         if errors:
             return jsonify({
                 "errors": errors,
                 "status": 400}), 400
-
         return create_incident(identity, data, 'intervention')
-    return error_response(
-        403, "Administrator cannot create an incident record")
 
 
 def create_incident(identity, data, type):
-    # creating an incident
     createdBy = identity
     status = 'draft'
-    incident = Incident(createdBy, type, data['title'], data['location'],
-                        status,
-                        data['Images'], data['Videos'], data['comment'])
+    incident = Incident(createdBy['id'], type, data['title'], data['location'],
+                        status, data['Images'], data['Videos'], data['comment'])
     response = incident.create_incident()
     return response
 
@@ -107,19 +103,19 @@ def get_redflags(identity):
 @authenticate
 def get_all(identity):
     # getting all incidents
-    return get_all_incidents(identity)
+    return get_all_incidents(identity, type)
 
 
 def get_incidents(type, identity):
     incidents = ()
 
-    # if isAdmin(identity):
-    #     conn.cur.execute("select * from incidents where type = '{}'".format(type))
-    #     incidents = conn.cur.fetchall()
-    # else:
-    conn.cur.execute(
-        "select * from incidents where type = '{}'".format(type))
-    incidents = conn.cur.fetchall()
+    if isAdmin(identity):
+        conn.cur.execute("select * from incidents where type = '{}'".format(type))
+        incidents = conn.cur.fetchall()
+    else:
+        conn.cur.execute(
+            "select * from incidents where type = '{}'".format(type))
+        incidents = conn.cur.fetchall()
 
     if not incidents:
         return jsonify({
@@ -133,15 +129,14 @@ def get_incidents(type, identity):
     }), 200
 
 
-def get_all_incidents(identity):
+def get_all_incidents(identity, type):
     incidents = ()
 
-    if isAdmin(identity):
+    if not isAdmin(identity):
         conn.cur.execute("select * from incidents")
         incidents = conn.cur.fetchall()
     else:
-        cur.execute(
-            "select * from incidents where createdBy = '{}'".format(identity))
+        conn.cur.execute("select * from incidents")
         incidents = conn.cur.fetchall()
 
     if not incidents:
@@ -149,7 +144,6 @@ def get_all_incidents(identity):
             "status": 404,
             "message": "There are no " + type + "s"
         }), 404
-
     return jsonify({
         "status": 200,
         "data": incidents
@@ -171,12 +165,12 @@ def edit_redflag_status(identity, redflag_id):
 
         if data['type'] == 'intervention':
             return jsonify({
-                "errors": "You are trying to edit an intervention record, use /interventions/<int:intervention_id>/status endpoint instead",
+                "errors": "This edits the redflag status only",
                 "status": 400}), 400
 
         if not data['status'].strip(' '):
             return jsonify({
-                "errors": "Red-flag status cannot be null",
+                "errors": "Redflag status cannot be null",
                 "status": 400}), 400
 
         return edit_incident(
@@ -204,7 +198,7 @@ def edit_intervention_status(identity, intervention_id):
 
         if data['type'] == 'red-flag':
             return jsonify({
-                "errors": "You are trying to edit a red-flag record, use /red-flags/<int:redflag_id>/status endpoint instead",
+                "errors": "This edits the intervention stutus only",
                 "status": 400}), 400
 
         if not data['status'].strip(' '):
@@ -235,14 +229,14 @@ def edit_redflag_location(identity, redflag_id):
             "errors": errors,
             "status": 400}), 400
 
-    if not data['type'].strip(' '):
+    if not data['identity'].strip(' '):
         return jsonify({
             "errors": "type cannot be null",
             "status": 400}), 400
 
     if data['type'] == 'intervention':
         return jsonify({
-            "errors": "You are trying to edit an intervention record, use /interventions/<int:intervention_id>/location endpoint instead",
+            "errors": "This edits the Redflag location only",
             "status": 400}), 400
 
     return edit_incident(
@@ -271,7 +265,7 @@ def edit_intervention_location(identity, intervention_id):
 
     if data['type'] == 'red-flag':
         return jsonify({
-            "errors": "You are trying to edit a red-flag record, use /red-flags/<int:redflag_id>/location endpoint instead",
+            "errors": "This edits the Intervention record only",
             "status": 400}), 400
 
     return edit_incident(
@@ -295,7 +289,7 @@ def edit_intervention_comment(identity, intervention_id):
 
     if data['type'] == 'red-flag':
         return jsonify({
-            "errors": "You are trying to edit a red-flag record, use /red-flags/<int:redflag_id>/comment endpoint instead",
+            "errors": "This edits the Intervention comment only",
             "status": 400}), 400
 
     return edit_incident(
@@ -319,7 +313,7 @@ def edit_redflag_comment(identity, redflag_id):
 
     if data['type'] == 'intervention':
         return jsonify({
-            "errors": "You are trying to edit an intervention record, use /interventions/<int:intervention_id>/comment endpoint instead",
+            "errors": "This edits the Redflag comment only",
             "status": 400}), 400
 
     return edit_incident(
@@ -413,14 +407,14 @@ def delete_incident(incident_id, type):
     }), 200
 
 
-# def isAdmin(user_id):
-#     conn.cur.execute("SELECT * from users WHERE id='{}'".format(user_id))
-#     user = conn.cur.fetchone()
-#     return user['isAdmin']
+def isAdmin(user_id):
+    conn.cur.execute("SELECT * from users WHERE id='{}'".format(user_id['id']))
+    user = conn.cur.fetchone()
+    return user['isadmin']
 
 
-def verified(user_id):
-    conn.cur.execute("select * from incidents where createdBy = '{}'".format(user_id))
+def verified(user_id,):
+    conn.cur.execute("select * from incidents where type='{}'".format(user_id['id']))
     incident = conn.cur.fetchone()
     if incident is None and isAdmin(user_id) == False:
         return False
@@ -508,14 +502,14 @@ def edit_any_incident(indentity, incident_id):
 def not_found(error):
     '''404 Error function'''
     return (jsonify(
-        {'error': 'Sorry :( We could not find what you are looking for.'}), 404)
+        {'error': 'We could not find what you are looking for.'}), 404)
 
 
 @app.errorhandler(400)
 def bad_request(error):
     '''400 Error function'''
     return (jsonify(
-        {'error': 'Error in the payload. Please verify that your payload is in the correct format'}), 400)
+        {'error': 'Error in the data formart. The Kind of data you are posting is not the required type'}), 400)
 
 
 @app.errorhandler(405)

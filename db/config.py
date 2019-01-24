@@ -31,19 +31,20 @@ class DatabaseConnection:
                     phoneNumber VARCHAR NOT NULL,
                     username VARCHAR NOT NULL,
                     password VARCHAR NOT NULL,
-                    registered TIMESTAMP,
+                    registered  TIMESTAMP WITHOUT TIME ZONE,
                     isAdmin BOOLEAN
                     );
 
                 CREATE TABLE IF NOT EXISTS incidents(
                     id SERIAL PRIMARY KEY NOT NULL,
-                    createdOn TIMESTAMP,
+                    createdOn  TIMESTAMP WITHOUT TIME ZONE,
                     createdBy INT REFERENCES users(id),
                     type VARCHAR NOT NULL,
+                    title VARCHAR NOT NULL,
                     location VARCHAR NOT NULL,
                     status VARCHAR NOT NULL,
-                    Images VARCHAR[] NOT NULL,
-                    Videos VARCHAR[] NOT NULL,
+                    Images VARCHAR NOT NULL,
+                    Videos VARCHAR NOT NULL,
                     comment VARCHAR NOT NULL
                     );
 

@@ -24,7 +24,6 @@ class Test_Incident(BaseTest):
         data=json.dumps(self.incident))
         response = self.client.get('api/v2/redflags/14',
         content_type='application/json')
-        print(response.data)
         self.assertEqual(response.status_code, 401)
 
     def test_get_single_intervention(self):
@@ -53,10 +52,136 @@ class Test_Incident(BaseTest):
         print(response.data)
         self.assertEqual(response.status_code, 401)
 
+    def test_empty_redflag_location(self):
+        redflag = {
+            "id": "1",
+            "location": "",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_empty_redflag_location(self):
+        redflag = {
+            "id": "1",
+            "location": "",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_empty_redflag_status(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_empty_redflag_location(self):
+        redflag = {
+            "id": "1",
+            "location": "",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
     def test_edit_redflag_location(self):
         redflag = {
             "id": "1",
             "location": "Mukono",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_edit_redflag_location(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        self.client.patch('api/v2/redflags/1/location',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.get('api/v2/redflags',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_edit_redflag_location_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "",
             "status": "draft",
             "comment": "another one",
             "Images": "image1, image2",
@@ -95,12 +220,71 @@ class Test_Incident(BaseTest):
         print(response.data)
         self.assertEqual(response.status_code, 401)
 
+    def test_edit_intervention_location_empty(self):
+        intervention = {
+            "id": "1",
+            "location": "",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/interventions',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        self.client.patch('api/v2/interventions/1/location',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        response = self.client.get('api/v2/interventions',
+        content_type='application/json')
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
     def test_edit_redflag_comment(self):
         redflag = {
             "id": "1",
             "location": "Mukono",
             "status": "draft",
             "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/8/comment',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_edit_redflag_comment_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "what we do",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/8/comment',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_edit_redflag_comment_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "",
             "Images": "image1, image2",
             "Videos": "video1, video2",
             "type": "red-flag"
@@ -133,7 +317,45 @@ class Test_Incident(BaseTest):
         print(response.data)
         self.assertEqual(response.status_code, 405)
 
+    def test_edit_intervention_comment_empty(self):
+        intervention = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/interventions',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        response = self.client.patch('api/v2/interventions/5/',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        print(response.data)
+        self.assertEqual(response.status_code, 405)
+
     def test_edit_redflag_status(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "red-flag"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/10/status',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_edit_redflag_status_exists(self):
         redflag = {
             "id": "1",
             "location": "Mukono",
@@ -267,10 +489,40 @@ class Test_Incident(BaseTest):
         print(response.data)
         self.assertEqual(response.status_code, 401)
 
+    def test_intervention_comment_no_validation(self):
+        redflag = {
+            "id": "1",
+            "location": "M",
+            "status": "",
+            "Images": "i, i",
+            "Videos": "1, v",
+            "type": "intervention"
+        }
+        response = self.client.post('api/v2/interventions',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
     def test_intervention_location_validation(self):
         intervention = {
             "id": "1",
             "comment": "test comment",
+            "status": "draft",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        response = self.client.post('api/v2/interventions',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_intervention_no_location_validation(self):
+        intervention = {
+            "id": "1",
+            "comment": "",
             "status": "draft",
             "Images": "image1, image2",
             "Videos": "video1, video2",
@@ -396,11 +648,109 @@ class Test_Incident(BaseTest):
         print(response.data)
         self.assertEqual(response.status_code, 405)
 
+    def test_can_only_edit_redflag_status_empty(self):
+        intervention = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(intervention))
+        response = self.client.patch('api/v2/redflags/10',
+        content_type='applicatiodata/json',
+        data=json.dumps(intervention))
+        print(response.data)
+        self.assertEqual(response.status_code, 405)
+
     def test_can_only_edit_intervention_status(self):
         redflag = {
             "id": "1",
             "location": "Mukono",
             "status": "draft",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/10/status',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+
+    def test_can_only_edit_intervention_status_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/10/status',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+    def test_can_only_edit_intervention_status_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "",
+            "comment": "another one",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/10/status',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+
+    def test_can_only_edit_intervention_comment_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "Mukono",
+            "status": "here it is",
+            "comment": "",
+            "Images": "image1, image2",
+            "Videos": "video1, video2",
+            "type": "intervention"
+        }
+        self.client.post('api/v2/redflags',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        response = self.client.patch('api/v2/redflags/10/status',
+        content_type='application/json',
+        data=json.dumps(redflag))
+        print(response.data)
+        self.assertEqual(response.status_code, 401)
+
+
+    def test_can_only_edit_intervention_location_empty(self):
+        redflag = {
+            "id": "1",
+            "location": "",
+            "status": "here we come",
             "comment": "another one",
             "Images": "image1, image2",
             "Videos": "video1, video2",

@@ -15,12 +15,7 @@ class BaseTest(unittest.TestCase):
             "Images": "image1, image2",
             "Videos": "video1, video2"
         }
-
-    ''' Generate auth token '''
-
-    def user_auth_token(self):
-        ''' Register a new user '''
-
+    def user_auth_token(self):                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
         user_details = {
             "firstname": "test_firstn",
             "lastname": "test_lastname",
