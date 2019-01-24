@@ -81,13 +81,6 @@ Class | Method | HTTP request | Description
 *RedflagApi* | **updateRedflagWithForm** | **PATCH** /redflag/{redflag_id}/location | update the location of a given redflag
 *RedflagApi* | **updateRedflagWithForm_0** | **PATCH** /redflag/{redflag_id}/comment | update the comment of a given redflag
 *RedflagApi* | **updateRedflagWithForm_1** | **PATCH** /redflag/{redflag_id}/status | update the status of a given redflag
-*UserApi* | **createUsersWithArrayInput** | **POST** /user/createWithArray | Creates list of users with given input array
-*UserApi* | **createUsersWithListInput** | **POST** /user/createWithList | Creates list of users with given input array
-*UserApi* | **deleteUser** | **DELETE** /user/{username} | Delete user
-*UserApi* | **getUserByName** | **GET** /user/{username} | Get user by user name
-*UserApi* | **loginUser** | **GET** /user/login | Logs user into the system
-*UserApi* | **logoutUser** | **GET** /user/logout | Logs out current logged in user session
-*UserApi* | **updateUser** | **PUT** /user/{username} | Updated user
 
 
 ## Documentation for Models
