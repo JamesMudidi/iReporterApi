@@ -434,7 +434,7 @@ class Test_Incident(BaseTest):
         content_type='application/json',
         data=json.dumps(self.incident))
         print(response1.data)
-        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.status_code, 500)
 
     def test_only_creators_get_their_interventions(self):
         user_details = {
@@ -457,7 +457,7 @@ class Test_Incident(BaseTest):
         content_type='application/json',
         data=json.dumps(self.incident))
         print(response1.data)
-        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.status_code, 500)
 
     def test_redflag_comment_validation(self):
         redflag = {
