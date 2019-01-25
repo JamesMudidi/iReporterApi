@@ -1,8 +1,7 @@
 ## Badges
-[![Build Status](https://travis-ci.org/JamesMudidi/iReporterApi.svg?branch=develop-v2)](https://travis-ci.org/JamesMudidi/iReporterApi)
+[![Build Status](https://travis-ci.org/JamesMudidi/iReporterApi.svg?branch=deploy)](https://travis-ci.org/JamesMudidi/iReporterApi)
 [![Maintainability](https://api.codeclimate.com/v1/badges/11b0282d0f924649df79/maintainability)](https://codeclimate.com/github/JamesMudidi/iReporterApi/maintainability)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f67f3e96d96f43849796c31782176141)](https://www.codacy.com/app/JamesMudidi/iReporterApi?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JamesMudidi/iReporterApi&amp;utm_campaign=Badge_Grade)
-[![Requirements Status](https://requires.io/github/JamesMudidi/iReporterApi/requirements.svg?branch=develop-v1)](https://requires.io/github/JamesMudidi/iReporterApi/requirements/?branch=develop-v1)
+
 
 # iRepoter
 iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. Users can also report on things that need government intervention around the community
