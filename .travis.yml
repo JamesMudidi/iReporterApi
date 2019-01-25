@@ -6,10 +6,10 @@ install:
   - pip install pytest-cov
   - pip install coveralls
 
-# before_script:
-#  - psql -c "CREATE DATABASE ireporter;" -U postgres
+before_script:
+ - psql -c "CREATE DATABASE ireporter;" -U postgres
 
-# command to run tests
+command to run tests
 script:
   - pytest --cov
   - coveralls
