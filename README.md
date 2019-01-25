@@ -108,4 +108,3 @@ This is version 1 of the API
 * Special Thanks to God Almighty
 * Special Thanks to Andela
 * Special Thanks to Andela KLA Bootcamp 15 members
-
