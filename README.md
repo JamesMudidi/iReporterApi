@@ -19,7 +19,7 @@ iReporter enables any/every citizen to bring any form of corruption to the notic
 
 
 ## Getting Started
-[API Documentation](https://app.swaggerhub.com/apis-docs/JamesMudidi/iRepoter/2.0)
+[API Documentation](https://documenter.getpostman.com/view/5833783/RzthQrAK)
 
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
