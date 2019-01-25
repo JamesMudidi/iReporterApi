@@ -9,7 +9,6 @@ install:
 before_script:
  - psql -c "CREATE DATABASE ireporter;" -U postgres
 
-command to run tests
 script:
   - pytest --cov
   - coveralls
