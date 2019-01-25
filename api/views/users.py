@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from psycopg2.extras import RealDictCursor
 from marshmallow import ValidationError, Schema, fields
-
+from api.controllers.users import users
 from db.config import DatabaseConnection
 from api.models.users import User
 from api.common.authenticator import authenticate
@@ -26,14 +26,6 @@ class SignInSchema(Schema):
     # Represents the schema for users
     email = fields.Email(required=True, validate=(email))
     password = fields.Str(required=True, validate=(required))
-
-
-def email_exists(email):
-    """ Check if a user exists in the db """
-    conn = DatabaseConnection()
-    conn.cur.execute("SELECT * from users WHERE email='{}'".format(email))
-    user = conn.cur.fetchone()
-    return user
 
 
 @api.route('/auth/signup', methods=['POST'])

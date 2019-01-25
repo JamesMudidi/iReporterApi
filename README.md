@@ -1,6 +1,7 @@
 ## Badges
 [![Build Status](https://travis-ci.org/JamesMudidi/iReporterApi.svg?branch=deploy)](https://travis-ci.org/JamesMudidi/iReporterApi)
 [![Maintainability](https://api.codeclimate.com/v1/badges/11b0282d0f924649df79/maintainability)](https://codeclimate.com/github/JamesMudidi/iReporterApi/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/JamesMudidi/iReporterApi/badge.svg?branch=deploy)](https://coveralls.io/github/JamesMudidi/iReporterApi?branch=deploy)
 
 
 # iRepoter
